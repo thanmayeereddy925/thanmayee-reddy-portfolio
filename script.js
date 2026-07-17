@@ -3,17 +3,24 @@
 // ==========================================================================
 const PROJECTS = [
   {
-    id: "smart-agri",
-    title: "IoT-Based Smart Agricultural System",
-    desc: "A smart agriculture setup using environmental sensors to monitor temperature, humidity, and soil moisture to support automated irrigation decisions.",
-    tags: ["IoT", "Arduino", "Sensors", "ESP8266"],
-    icon: "🌾"
+    id: "prod-tracker",
+    title: "AI Productivity Tracker",
+    desc: "An intelligent productivity monitoring system leveraging Machine Learning and Flask to analyze work patterns, predict focus states, and provide actionable insights for optimizing daily efficiency.",
+    tags: ["Machine Learning", "Flask", "AI", "Data Analysis"],
+    icon: "📈"
+  },
+  {
+    id: "plant-disease",
+    title: "Plant Disease Detection",
+    desc: "A computer vision application using Deep Learning (CNNs) and Zero Shot Learning to accurately classify and detect diseases from leaf images, providing early warnings for agricultural AI.",
+    tags: ["Deep Learning", "Zero Shot Learning", "CNN", "CV"],
+    icon: "🌱"
   },
   {
     id: "spam-detection",
     title: "Spam Email Detection",
     desc: "A supervised machine learning model classifying spam vs. ham using 13 engineered features, connected to an active inbox for real-time validation.",
-    tags: ["Python", "Scikit-Learn", "ML", "Pandas"],
+    tags: ["Machine Learning", "Scikit-Learn", "Python", "Pandas"],
     icon: "✉️"
   },
   {
@@ -48,8 +55,15 @@ const PROJECTS = [
     id: "studymind-ai",
     title: "StudyMind AI",
     desc: "An adaptive study navigator that generates customized roadmaps using Random Forest engines, proctored exam portals, and Gemini APIs.",
-    tags: ["Flask", "Gemini API", "Random Forest", "SQLite"],
+    tags: ["Flask", "Gemini API", "Machine Learning", "SQLite"],
     icon: "🧠"
+  },
+  {
+    id: "smart-agri",
+    title: "IoT-Based Smart Agricultural System",
+    desc: "A smart agriculture setup using environmental sensors to monitor temperature, humidity, and soil moisture to support automated irrigation decisions.",
+    tags: ["IoT", "Arduino", "Sensors", "ESP8266"],
+    icon: "🌾"
   }
 ];
 
@@ -402,14 +416,13 @@ function triggerDownload(content, filename, contentType) {
 // ==========================================================================
 function initContactForm() {
   document.getElementById("contactForm")?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("fname").value.trim();
-    const email = document.getElementById("femail").value.trim();
-    const msg = document.getElementById("fmsg").value.trim();
-    
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
-    const body = encodeURIComponent(`Hello Thanmayee,\n\n${msg}\n\nBest regards,\n${name}\nEmail: ${email}`);
-    
-    window.location.href = `mailto:thanmayeereddy925@gmail.com?subject=${subject}&body=${body}`;
+    // Form is handled by Web3Forms action URL. 
+    // We just show a loading state on the button.
+    const btn = e.target.querySelector("button[type='submit']");
+    if(btn) {
+      btn.innerHTML = "Sending...";
+      btn.style.opacity = "0.7";
+      btn.style.pointerEvents = "none";
+    }
   });
 }
