@@ -415,14 +415,78 @@ function triggerDownload(content, filename, contentType) {
 // 7. CONTACT FORM SUBMISSION
 // ==========================================================================
 function initContactForm() {
-  document.getElementById("contactForm")?.addEventListener("submit", (e) => {
-    // Form is handled by Web3Forms action URL. 
-    // We just show a loading state on the button.
-    const btn = e.target.querySelector("button[type='submit']");
+  const form = document.getElementById("contactForm");
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const btn = form.querySelector("button[type='submit']");
+    const originalText = btn.innerHTML;
+    
     if(btn) {
       btn.innerHTML = "Sending...";
       btn.style.opacity = "0.7";
       btn.style.pointerEvents = "none";
     }
+
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        showToast("Sent! See you soon !!");
+        form.reset();
+      } else {
+        showToast("Something went wrong. Please try again.", true);
+      }
+    } catch (error) {
+      console.error(error);
+      showToast("Error sending message.", true);
+    } finally {
+      if(btn) {
+        btn.innerHTML = originalText;
+        btn.style.opacity = "1";
+        btn.style.pointerEvents = "auto";
+      }
+    }
   });
+}
+
+function showToast(message, isError = false) {
+  const toast = document.createElement("div");
+  toast.innerText = message;
+  toast.style.position = "fixed";
+  toast.style.bottom = "30px";
+  toast.style.right = "30px";
+  toast.style.padding = "15px 25px";
+  toast.style.backgroundColor = isError ? "#ff3a54" : "#4ade80";
+  toast.style.color = isError ? "#fff" : "#070a13";
+  toast.style.borderRadius = "8px";
+  toast.style.boxShadow = "0 10px 30px rgba(0,0,0,0.5)";
+  toast.style.zIndex = "9999";
+  toast.style.fontFamily = "var(--font-body)";
+  toast.style.fontWeight = "600";
+  toast.style.transform = "translateY(100px)";
+  toast.style.opacity = "0";
+  toast.style.transition = "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)";
+  
+  document.body.appendChild(toast);
+  
+  // Trigger animation
+  setTimeout(() => {
+    toast.style.transform = "translateY(0)";
+    toast.style.opacity = "1";
+  }, 10);
+  
+  // Remove after 3 seconds
+  setTimeout(() => {
+    toast.style.transform = "translateY(100px)";
+    toast.style.opacity = "0";
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
 }
