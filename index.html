@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanmayee Reddy — AI/ML Engineer</title>
+  <meta name="description" content="Thanmayee Reddy — AI/ML Engineer & freelance developer. Specialty in IoT, RAG, computer vision, and machine learning." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@500;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Grain Overlay for texture -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Ambient Glow Background Blobs -->
+  <div class="glow-blob glow-1" aria-hidden="true"></div>
+  <div class="glow-blob glow-2" aria-hidden="true"></div>
+
+  <!-- ============ FIXED NAVIGATION TABS ============ -->
+  <header class="nav-container">
+    <div class="nav-pill">
+      <a href="#hero" class="nav-logo">TR<span class="dot">.</span></a>
+      <nav class="nav-tabs" id="navTabs">
+        <a href="#about" class="nav-tab active">About</a>
+        <a href="#work" class="nav-tab">Projects</a>
+        <a href="#services" class="nav-tab">Services</a>
+        <a href="#experience" class="nav-tab">Experience</a>
+        <a href="#contact" class="nav-tab">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Let's Talk</a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero-section" id="hero">
+      <!-- Massive Background Text -->
+      <div class="hero-bg-text-container" aria-hidden="true">
+        <h1 class="hero-bg-text">PORTFOLIO</h1>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-details">
+          <div class="status-tag">
+            <span class="status-dot"></span>
+            <span data-editable-id="hero-eyebrow">AI / ML Engineer &amp; Freelance Developer</span>
+          </div>
+
+          <h2 class="hero-title">
+            <span class="greeting">Hello, I'm</span>
+            <span class="name-main" data-editable-id="hero-name">Thanmayee Reddy</span>
+          </h2>
+
+          <p class="hero-description" data-editable-id="hero-sub">
+            I build and deploy intelligent systems — bridging the gap between trained models and real-world software. From training computer vision models to engineering RAG pipelines and custom IoT devices.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#work" class="btn btn-primary">Selected Projects <span class="arrow">&rarr;</span></a>
+            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+          </div>
+
+          <!-- Hero Metrics -->
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <span class="metric-number" data-editable-id="stat-projects">07+</span>
+              <span class="metric-label">Projects Built</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-number" data-editable-id="stat-roles">02</span>
+              <span class="metric-label">Active Roles</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-number" data-editable-id="stat-certifications">04</span>
+              <span class="metric-label">Certifications</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overlapping Profile Image Container -->
+        <div class="hero-image-container">
+          <div class="profile-glow"></div>
+          <div class="profile-image-frame">
+            <img src="images/profile.jpg" alt="Thanmayee Reddy Portrait" class="profile-img" id="profileImg" />
+            <div class="profile-card-edit" id="profileEditOverlay">
+              <label for="profileUploadInput">
+                <span>Update Photo</span>
+                <input type="file" id="profileUploadInput" accept="image/*" />
+              </label>
+            </div>
+          </div>
+          <div class="availability-badge">
+            <span class="pulse-dot"></span>
+            <span>Available for Freelance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section class="section" id="about">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-number">01 //</span>
+          <h2 class="section-title">About Me</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-intro">
+            <h3 class="about-lead" data-editable-id="about-lead">
+              A 3rd-year Computer Science Engineering student specializing in <span class="text-accent">Artificial Intelligence &amp; Machine Learning</span>.
+            </h3>
+            <div class="about-text" data-editable-id="about-body">
+              <p>I am Gadi Thanmayee Reddy, based in Hyderabad. Currently in my third year of B.Tech at Marri Laxman Reddy Institute of Technology and Management (MLRITM), I actively combine academic concepts with hands-on systems development.</p>
+              <p>I balance my studies with practical roles, serving as an AI/ML Intern at QuGates Technologies and a Part-Time ML Developer at Oorjith. I enjoy engineering systems where machine learning models solve real-world problems, from automated crop disease detection using computer vision to RAG-based document chatbots.</p>
+            </div>
+          </div>
+
+          <div class="about-skills-panel">
+            <h4 class="panel-title">Technical Expertise</h4>
+            
+            <div class="skill-category">
+              <h5>Programming</h5>
+              <div class="skill-tags">
+                <span>Python</span>
+                <span>C</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h5>AI &amp; Machine Learning</h5>
+              <div class="skill-tags">
+                <span>Supervised Learning</span>
+                <span>Data Preprocessing</span>
+                <span>Computer Vision</span>
+                <span>Generative AI (Basics)</span>
+                <span>RAG Applications</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h5>Libraries &amp; Frameworks</h5>
+              <div class="skill-tags">
+                <span>TensorFlow / Keras</span>
+                <span>PyTorch</span>
+                <span>Scikit-learn</span>
+                <span>Pandas</span>
+                <span>NumPy</span>
+                <span>Flask</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h5>IoT &amp; Embedded Systems</h5>
+              <div class="skill-tags">
+                <span>Arduino</span>
+                <span>ESP8266</span>
+                <span>Sensors</span>
+                <span>IoT Fundamentals</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK / PROJECTS SECTION ============ -->
+    <section class="section section-alt" id="work">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-number">02 //</span>
+          <h2 class="section-title">Selected Projects</h2>
+        </div>
+        <p class="section-subtitle" id="editHint">These projects are loaded dynamically. You can click <strong>Edit Portfolio</strong> in the bottom right to upload custom screenshots or change details.</p>
+
+        <!-- Project Grid -->
+        <div class="project-grid" id="projectGrid">
+          <!-- Injected by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES SECTION ============ -->
+    <section class="section" id="services">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-number">03 //</span>
+          <h2 class="section-title">Freelance Services</h2>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">💻</div>
+            <h3 class="service-title">ML Model Development</h3>
+            <p class="service-desc">Training, fine-tuning, and evaluating ML models (Classification, Regression, Object Detection) tailored to your datasets using Python, TensorFlow, and PyTorch.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🤖</div>
+            <h3 class="service-title">RAG &amp; Chatbot Engineering</h3>
+            <p class="service-desc">Building retrieval-augmented generation systems that connect LLMs to your private documentation, databases, and APIs for context-aware customer support or search.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">📡</div>
+            <h3 class="service-title">IoT Prototyping &amp; Firmware</h3>
+            <p class="service-desc">Connecting microcontrollers (ESP8266, Arduino) with sensors, implementing local analytics, and setting up communication lines to direct dashboards or server endpoints.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3 class="service-title">Data Preprocessing &amp; Engineering</h3>
+            <p class="service-desc">Parsing raw datasets, handling missing values, creating engineered features, and preparing structured formats to support analytical pipelines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE SECTION ============ -->
+    <section class="section section-alt" id="experience">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-number">04 //</span>
+          <h2 class="section-title">Resume Details</h2>
+        </div>
+
+        <div class="resume-columns">
+          <!-- Timeline Column -->
+          <div class="resume-col">
+            <h3 class="resume-col-title">Work Experience</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-meta">
+                  <span class="timeline-period">June 2026 – Present</span>
+                  <span class="timeline-org">QuGates Technologies</span>
+                  <span class="timeline-loc">Bengaluru, Karnataka (Remote)</span>
+                </div>
+                <div class="timeline-content">
+                  <h4 class="timeline-role">AI/ML Intern</h4>
+                  <ul class="timeline-bullets">
+                    <li>Developing AI and Machine Learning solutions for crop disease detection using computer vision and deep learning techniques.</li>
+                    <li>Building intelligent image classification models to identify plant diseases and improve agricultural decision-making.</li>
+                    <li>Working on software automation solutions to streamline workflows and reduce manual processes.</li>
+                    <li>Performing data preprocessing, model training, testing, and performance evaluation for AI applications.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-meta">
+                  <span class="timeline-period">July 2026 – Present</span>
+                  <span class="timeline-org">Oorjith</span>
+                  <span class="timeline-loc">Chandigarh, Punjab (Remote)</span>
+                </div>
+                <div class="timeline-content">
+                  <h4 class="timeline-role">ML Developer (Part-Time)</h4>
+                  <ul class="timeline-bullets">
+                    <li>Develop and support machine learning solutions by applying data preprocessing, model development, and performance evaluation techniques.</li>
+                    <li>Collaborate with cross-functional teams to build and optimize AI-driven applications using Python and machine learning frameworks.</li>
+                    <li>Assist in analyzing datasets, improving model performance, and implementing practical AI solutions for real-world use cases.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="resume-col-title" style="margin-top: 3rem;">Education</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-meta">
+                  <span class="timeline-period">Sept 2024 – Jun 2028</span>
+                  <span class="timeline-org">MLRITM</span>
+                  <span class="timeline-loc">Hyderabad, Telangana</span>
+                </div>
+                <div class="timeline-content">
+                  <h4 class="timeline-role">B.Tech in Computer Science Engineering (AI &amp; ML)</h4>
+                  <p class="timeline-desc">Focusing on Core Machine Learning algorithms, Data Structures, Python Development, and Embedded IoT systems.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-meta">
+                  <span class="timeline-period">July 2024</span>
+                  <span class="timeline-org">Narayana Junior College</span>
+                  <span class="timeline-loc">Kukatpally, Hyderabad</span>
+                </div>
+                <div class="timeline-content">
+                  <h4 class="timeline-role">Intermediate (MPC)</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Creds & Certifications Column -->
+          <div class="resume-col">
+            <h3 class="resume-col-title">Courses &amp; Certifications</h3>
+            <ul class="cert-list">
+              <li class="cert-item">
+                <div class="cert-info">
+                  <span class="cert-name">Prime 2.0: AI/ML Batch</span>
+                  <span class="cert-details">Topics: ML, Deep Learning, Generative AI, RAG, PyTorch</span>
+                </div>
+                <span class="cert-status in-progress">In Progress</span>
+              </li>
+              <li class="cert-item">
+                <div class="cert-info">
+                  <span class="cert-name">Python with AI Course</span>
+                  <span class="cert-details">AI for Techies: Programming &amp; Application Development</span>
+                </div>
+                <span class="cert-status in-progress">In Progress</span>
+              </li>
+              <li class="cert-item">
+                <div class="cert-info">
+                  <span class="cert-name">AI Projects Module</span>
+                  <span class="cert-details">Hands-on model development and app deployment</span>
+                </div>
+                <span class="cert-status in-progress">In Progress</span>
+              </li>
+              <li class="cert-item">
+                <div class="cert-info">
+                  <span class="cert-name">Infosys Springboard Certification</span>
+                  <span class="cert-details">GAN for Cardiovascular Disease (CVD)</span>
+                </div>
+                <span class="cert-status completed">Completed</span>
+              </li>
+            </ul>
+
+            <h3 class="resume-col-title" style="margin-top: 3.5rem;">Achievements</h3>
+            <div class="achievement-card">
+              <div class="ach-trophy">🏆</div>
+              <div class="ach-info">
+                <h4 class="ach-title">Winner, Project Expo</h4>
+                <p class="ach-desc">Presented and demonstrated an IoT-based Smart Irrigation System, explaining its real-world agricultural impact and sensory data pipeline.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT SECTION ============ -->
+    <section class="section" id="contact">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-number">05 //</span>
+          <h2 class="section-title">Let's Connect</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-details">
+            <h3 class="contact-lead" data-editable-id="contact-lead">Have a project or opportunity in mind? Let's build something impactful.</h3>
+            
+            <div class="contact-channels">
+              <a href="mailto:thanmayeereddy925@gmail.com" class="channel-row">
+                <span class="channel-icon">✉</span>
+                <span class="channel-text">thanmayeereddy925@gmail.com</span>
+              </a>
+              <a href="tel:+918332930925" class="channel-row">
+                <span class="channel-icon">☎</span>
+                <span class="channel-text">+91 83329 30925</span>
+              </a>
+              <div class="channel-row">
+                <span class="channel-icon">⚲</span>
+                <span class="channel-text">Hyderabad, Telangana, India</span>
+              </div>
+            </div>
+
+            <div class="contact-socials">
+              <a href="https://www.linkedin.com/in/gadithanmayee" target="_blank" rel="noopener" class="social-link">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.15 1.45-2.15 2.94v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com/thanmayeereddy925" target="_blank" rel="noopener" class="social-link">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.94.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="fname">Your Name</label>
+              <input type="text" id="fname" placeholder="Thanmayee Reddy" required />
+            </div>
+            <div class="form-group">
+              <label for="femail">Your Email</label>
+              <input type="email" id="femail" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="fmsg">Project Details / Message</label>
+              <textarea id="fmsg" rows="5" placeholder="Describe your project, timeline, or query..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit">Send Message &rarr;</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-container">
+      <span class="footer-logo">TR<span class="dot">.</span></span>
+      <p class="footer-credits">&copy; <span id="year"></span> Thanmayee Reddy. Crafted with precision &amp; code.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/gadithanmayee" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/thanmayeereddy925" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ EDIT MODE FLOATING ACTION BAR ============ -->
+  <div class="edit-controls-container" id="editControls">
+    <button class="btn-edit-toggle" id="editToggleBtn" title="Toggle Edit Mode">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+      <span>Edit Portfolio</span>
+    </button>
+    <div class="edit-menu" id="editMenu">
+      <button class="edit-menu-btn btn-success" id="saveCodeBtn">
+        💾 Export Code
+      </button>
+      <button class="edit-menu-btn btn-danger" id="resetStorageBtn">
+        🔄 Reset Defaults
+      </button>
+    </div>
+  </div>
+
+  <!-- Export Code Modal -->
+  <div class="modal" id="codeModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <h3>Download Updated Files</h3>
+      <p>Any text edits and image uploads you made are currently saved in your browser's local storage. To save these permanently so everyone visiting your Vercel site can see them, you can download the updated `script.js` or `index.html` and push them to your repository!</p>
+      
+      <div class="modal-buttons">
+        <button class="btn btn-primary" id="downloadHtmlBtn">📥 Download index.html</button>
+        <button class="btn btn-primary" id="downloadJsBtn">📥 Download script.js</button>
+      </div>
+
+      <div class="modal-instructions">
+        <h4>How to update on Vercel:</h4>
+        <ol>
+          <li>Click the buttons above to download your modified files.</li>
+          <li>Replace the files in your portfolio directory on your computer.</li>
+          <li>Run <code>vercel --prod</code> (or push your changes to GitHub if auto-deploy is configured) to make them live for everyone!</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
