@@ -47,15 +47,15 @@ const PROJECTS = [
   {
     id: "prod-tracker",
     title: "AI Productivity Tracker",
-    desc: "An intelligent productivity monitoring system leveraging Machine Learning and FastAPI to analyze work patterns, predict focus states, and provide actionable insights for optimizing daily efficiency.",
-    tags: ["Machine Learning", "FastAPI", "AI", "Data Analysis"],
+    desc: "An intelligent productivity monitoring system leveraging Machine Learning and Flask to analyze work patterns, predict focus states, and provide actionable insights for optimizing daily efficiency.",
+    tags: ["Machine Learning", "Flask", "AI", "Data Analysis"],
     icon: "📈"
   },
   {
     id: "plant-disease",
     title: "Plant Disease Detection",
-    desc: "A computer vision application using Deep Learning (CNNs) and Zero Shot Learning to accurately classify and detect diseases from leaf images, providing early warnings for agricultural AI.",
-    tags: ["Deep Learning", "Zero Shot Learning", "CNN", "CV"],
+    desc: "A computer vision application using Deep Learning (CNNs), Zero Shot Learning, and FastAPI to accurately classify and detect diseases from leaf images, providing early warnings for agricultural AI.",
+    tags: ["Deep Learning", "FastAPI", "CNN", "CV"],
     icon: "🌱"
   },
   {
