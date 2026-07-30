@@ -1829,8 +1829,51 @@ body.edit-mode .edit-menu {
 }
 .modal-long-desc {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.8;
+}
+.modal-long-desc p {
+  margin-bottom: 1rem;
+}
+.modal-section-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 1.25rem 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.modal-section-title::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 14px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.modal-bullet-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.25rem;
+}
+.modal-bullet-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+.modal-bullet-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0.3rem;
+  color: var(--accent);
+  font-size: 1.1rem;
+  line-height: 1;
+  top: 0.1rem;
 }
 .modal-long-desc strong,
 .modal-long-desc b {
