@@ -44,8 +44,8 @@ const PROJECTS = [
     icon: "🤖",
     github: "https://github.com/thanmayeereddy925/iot_hardware_bot",
     images: [
-      "images/projects/image29.png",
-      "images/projects/image15.png"
+      "images/projects/image15.png",
+      "images/projects/image29.png"
     ],
     longDesc: `<p>The IoT Hardware Chatbot is a domain-specific Retrieval-Augmented Generation (RAG) assistant designed to provide accurate technical assistance for microcontrollers, sensors, actuators, and embedded electronics.</p>
 
@@ -157,7 +157,7 @@ const PROJECTS = [
     desc: "An adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API with a Random Forest ML engine and proctored anti-cheat exam portal.",
     tags: ["Flask", "Gemini API", "Machine Learning", "SQLite", "Scikit-learn"],
     icon: "🧠",
-    github: null,
+    github: "https://github.com/thanmayeereddy925/StudyMind",
     images: [
       "images/projects/image33.png",
       "images/projects/image17.png",
@@ -188,10 +188,10 @@ const PROJECTS = [
     icon: "📈",
     github: "https://github.com/thanmayeereddy925/AI-Productivity-Tracker",
     images: [
+      "images/projects/image34.png",
       "images/projects/image7.png",
       "images/projects/image1.png",
       "images/projects/image22.png",
-      "images/projects/image34.png",
       "images/projects/image9.png",
       "images/projects/image30.png",
       "images/projects/image11.png",
