@@ -99,7 +99,7 @@ const PROJECTS = [
     desc: "A retrieval-augmented generation chatbot for IoT sensors and microcontrollers, retrieving from technical documentation and Wikipedia API, with LLM-powered context-aware responses via a Flask interface.",
     tags: ["RAG", "Flask", "LLM", "NLP", "Wikipedia API"],
     icon: "🤖",
-    github: "https://github.com/thanmayeereddy925/iot-hardware-chatbot",
+    github: "https://github.com/thanmayeereddy925/iot_hardware_bot",
     images: [
       "images/projects/image29.png",
       "images/projects/image15.png"
@@ -121,7 +121,7 @@ const PROJECTS = [
     desc: "An AI-based computer vision system that detects road accidents from uploaded images using a trained CNN (TensorFlow/Keras) + YOLOv8 model, with Telegram alert integration when an accident is detected.",
     tags: ["TensorFlow", "Keras", "YOLOv8", "Flask", "Computer Vision", "Telegram API"],
     icon: "🚗",
-    github: "https://github.com/thanmayeereddy925/Accident_detection_Flask",
+    github: "https://github.com/thanmayeereddy925/accident_detection",
     images: [
       "images/projects/image36.png",
       "images/projects/image14.png",
@@ -215,7 +215,7 @@ This project is currently being rebuilt with an improved architecture. The v2 ve
     desc: "A computer vision application using Deep Learning (CNNs) and Zero Shot Learning to detect and classify plant diseases from leaf images. Currently under active development — repository and full documentation coming soon.",
     tags: ["Deep Learning", "FastAPI", "CNN", "Zero Shot Learning", "Computer Vision"],
     icon: "🌱",
-    github: "https://github.com/thanmayeereddy925",
+    github: "https://github.com/thanmayeereddy925/plant_disease_detection",
     images: [],
     longDesc: `The Plant Disease Detection project uses Deep Learning to analyze leaf images and identify diseases with high accuracy, providing early warnings for agricultural decision-making.
 
