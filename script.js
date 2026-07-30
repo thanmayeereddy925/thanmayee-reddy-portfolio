@@ -10,11 +10,10 @@ const PROJECTS = [
     icon: "🫀",
     github: "https://github.com/thanmayeereddy925/ECG_reportprediction_NLP",
     images: [
-      "images/projects/image5.png",
-      "images/projects/image8.png",
-      "images/projects/image9.png",
       "images/projects/image10.png",
-      "images/projects/image11.png"
+      "images/projects/image8.png",
+      "images/projects/image5.png",
+      "images/projects/image6.png"
     ],
     longDesc: `YTBT Cardio NLP is a multi-modal clinical diagnostic system that translates 12-lead ECG waveform grid images into structured cardiology text reports.
 
@@ -36,13 +35,16 @@ const PROJECTS = [
     desc: "An adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API with a Random Forest ML engine and proctored anti-cheat exam portal.",
     tags: ["Flask", "Gemini API", "Machine Learning", "SQLite", "Scikit-learn"],
     icon: "🧠",
-    github: "https://github.com/thanmayeereddy925",
+    github: "https://github.com/thanmayeereddy925/StudyMind-AI",
     images: [
+      "images/projects/image33.png",
       "images/projects/image17.png",
-      "images/projects/image35.png",
+      "images/projects/image13.png",
       "images/projects/image38.png",
-      "images/projects/image37.png",
-      "images/projects/image13.png"
+      "images/projects/image32.png",
+      "images/projects/image35.png",
+      "images/projects/image39.png",
+      "images/projects/image37.png"
     ],
     longDesc: `StudyMind AI is an intelligent, adaptive learning platform that personalizes a student's entire study journey from goal-setting to assessment.
 
@@ -63,12 +65,12 @@ const PROJECTS = [
     desc: "A supervised machine learning model classifying spam vs. ham using 13 custom engineered features, connected to Gmail IMAP for real-time inbox analysis and classification.",
     tags: ["Machine Learning", "Scikit-Learn", "Python", "Pandas", "IMAP"],
     icon: "✉️",
-    github: "https://github.com/thanmayeereddy925",
+    github: "https://github.com/thanmayeereddy925/spam_email_detector",
     images: [
       "images/projects/image20.png",
-      "images/projects/image19.png",
-      "images/projects/image21.png",
-      "images/projects/image22.png"
+      "images/projects/image26.png",
+      "images/projects/image16.png",
+      "images/projects/image19.png"
     ],
     longDesc: `SpamShield is a real-time email classifier that connects directly to your Gmail inbox via IMAP and evaluates every email against 13 custom-engineered features.
 
@@ -97,10 +99,10 @@ const PROJECTS = [
     desc: "A retrieval-augmented generation chatbot for IoT sensors and microcontrollers, retrieving from technical documentation and Wikipedia API, with LLM-powered context-aware responses via a Flask interface.",
     tags: ["RAG", "Flask", "LLM", "NLP", "Wikipedia API"],
     icon: "🤖",
-    github: "https://github.com/thanmayeereddy925",
+    github: "https://github.com/thanmayeereddy925/iot-hardware-chatbot",
     images: [
-      "images/projects/image15.png",
-      "images/projects/image16.png"
+      "images/projects/image29.png",
+      "images/projects/image15.png"
     ],
     longDesc: `The IoT Hardware Chatbot is a domain-specific Retrieval-Augmented Generation (RAG) system built to answer technical questions about sensors, microcontrollers, modules, actuators, and electronics.
 
@@ -119,10 +121,12 @@ const PROJECTS = [
     desc: "An AI-based computer vision system that detects road accidents from uploaded images using a trained CNN (TensorFlow/Keras) + YOLOv8 model, with Telegram alert integration when an accident is detected.",
     tags: ["TensorFlow", "Keras", "YOLOv8", "Flask", "Computer Vision", "Telegram API"],
     icon: "🚗",
-    github: "https://github.com/thanmayeereddy925",
+    github: "https://github.com/thanmayeereddy925/Accident_detection_Flask",
     images: [
       "images/projects/image36.png",
-      "images/projects/image23.png"
+      "images/projects/image14.png",
+      "images/projects/image23.png",
+      "images/projects/image18.png"
     ],
     longDesc: `This deep learning system detects road accidents from image inputs and, when an accident is confirmed, automatically requests the user's GPS location and sends a Google Maps link to an emergency Telegram channel.
 
@@ -148,7 +152,9 @@ const PROJECTS = [
     icon: "👥",
     github: "https://github.com/thanmayeereddy925/Deepfake",
     images: [
-      "images/projects/image27.png"
+      "images/projects/image27.png",
+      "images/projects/image31.png",
+      "images/projects/image21.png"
     ],
     longDesc: `The Deepfake Detection project builds a binary image classifier to distinguish <b>real faces</b> from <b>deepfake-generated faces</b> using convolutional neural networks.
 
@@ -174,14 +180,20 @@ This project is currently being rebuilt with an improved architecture. The v2 ve
     desc: "An intelligent productivity & task management system with multi-role dashboards (Manager/Employee/Admin), AI-powered suspicious activity detection, manager feedback loops, and work log analytics using Flask and SQLite.",
     tags: ["Machine Learning", "Flask", "AI", "SQLite", "Data Analysis"],
     icon: "📈",
-    github: "https://github.com/thanmayeereddy925",
+    github: "https://github.com/thanmayeereddy925/AI-Productivity-Tracker",
     images: [
+      "images/projects/image7.png",
       "images/projects/image1.png",
-      "images/projects/image2.png",
+      "images/projects/image22.png",
+      "images/projects/image34.png",
+      "images/projects/image9.png",
+      "images/projects/image30.png",
+      "images/projects/image11.png",
       "images/projects/image3.png",
       "images/projects/image4.png",
+      "images/projects/image2.png",
       "images/projects/image25.png",
-      "images/projects/image30.png"
+      "images/projects/image24.png"
     ],
     longDesc: `The AI Workforce Productivity & Task Management System is a multi-role web application that gives managers, employees, and admins different data views and interaction controls for monitoring and optimizing workplace productivity.
 
@@ -227,7 +239,9 @@ This project is currently being built as part of work at QuGates Technologies. T
     tags: ["IoT", "Arduino", "ESP8266", "Sensors", "Embedded Systems"],
     icon: "🌾",
     github: "https://github.com/thanmayeereddy925",
-    images: [],
+    images: [
+      "images/projects/image12.jpg"
+    ],
     longDesc: `The IoT-Based Smart Agricultural System is an embedded hardware project that automates monitoring of environmental conditions for smart irrigation decision support.
 
 <strong>Hardware Components:</strong>
