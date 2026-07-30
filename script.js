@@ -167,7 +167,7 @@ const PROJECTS = [
     desc: "An adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API with a Random Forest ML engine and proctored anti-cheat exam portal.",
     tags: ["Flask", "Gemini API", "Machine Learning", "SQLite", "Scikit-learn"],
     icon: "🧠",
-    github: "https://github.com/thanmayeereddy925",
+    github: "https://github.com/thanmayeereddy925/StudyMind",
     images: [
       "images/projects/image33.png",
       "images/projects/image17.png",
@@ -256,7 +256,7 @@ const PROJECTS = [
     desc: "A smart agriculture setup using environmental sensors (temperature, humidity, soil moisture) connected via Arduino/ESP8266 to monitor field conditions and support automated smart irrigation decisions.",
     tags: ["IoT", "Arduino", "ESP8266", "Sensors", "Embedded Systems"],
     icon: "🌾",
-    github: "https://github.com/thanmayeereddy925",
+    github: "https://github.com/thanmayeereddy925/smart_agriculture",
     images: [
       "images/projects/image12.jpg"
     ],
