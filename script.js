@@ -3,63 +3,6 @@
 // ==========================================================================
 const PROJECTS = [
   {
-    id: "ytbt-cardio",
-    title: "YTBT Cardio NLP",
-    desc: "A 2D CNN + Transformer system translating 12-lead ECG waveform images into structured medical reports with a multi-role Flask web portal (Doctor, Patient, Technician, Admin) and SQLite audit logs.",
-    tags: ["PyTorch", "Transformers", "CNN", "NLP", "Flask", "SQLite"],
-    icon: "🫀",
-    github: "https://github.com/thanmayeereddy925/ECG_reportprediction_NLP",
-    images: [
-      "images/projects/image10.png",
-      "images/projects/image8.png",
-      "images/projects/image5.png",
-      "images/projects/image6.png"
-    ],
-    longDesc: `YTBT Cardio NLP is a multi-modal clinical diagnostic system that translates 12-lead ECG waveform grid images into structured cardiology text reports.
-
-<strong>Architecture:</strong> A 2D CNN Visual Encoder captures spatial patterns from the ECG grid image, feeding into a causal Transformer Decoder that generates the report token-by-token using a custom Byte-Pair Encoding (BPE) tokenizer trained on cardiology terminology.
-
-<strong>Multi-Role Flask Portal:</strong>
-• <b>Technician</b> — Uploads patient ECG PDF reports and triggers AI decoding
-• <b>Doctor (Cardiologist)</b> — Reviews AI-generated reports, corrects them, and adds final diagnosis
-• <b>Patient</b> — Views finalized reports, ECG images in lightbox, and submits health doubts to their doctor
-• <b>Admin/Receptionist</b> — Manages staff, maps patients to doctors, monitors analytics charts and audit logs
-
-<strong>Dataset:</strong> PTB-XL real clinical ECG records (21,000+ recordings), rendered as 12-lead grid PNG images.
-<strong>Training:</strong> 25 epochs with BPE tokenizer trained on a custom cardiology medical corpus.
-<strong>NLG Scores:</strong> BLEU & ROUGE-L evaluation for report quality.`
-  },
-  {
-    id: "studymind-ai",
-    title: "StudyMind AI",
-    desc: "An adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API with a Random Forest ML engine and proctored anti-cheat exam portal.",
-    tags: ["Flask", "Gemini API", "Machine Learning", "SQLite", "Scikit-learn"],
-    icon: "🧠",
-    github: "https://github.com/thanmayeereddy925/StudyMind-AI",
-    images: [
-      "images/projects/image33.png",
-      "images/projects/image17.png",
-      "images/projects/image13.png",
-      "images/projects/image38.png",
-      "images/projects/image32.png",
-      "images/projects/image35.png",
-      "images/projects/image39.png",
-      "images/projects/image37.png"
-    ],
-    longDesc: `StudyMind AI is an intelligent, adaptive learning platform that personalizes a student's entire study journey from goal-setting to assessment.
-
-<strong>Core Features:</strong>
-• <b>AI Roadmap Generator</b> — Uses Google Gemini API to break any study goal into a week-by-week custom curriculum with prerequisite sequencing
-• <b>Interactive Knowledge Graph</b> — Visual node-based representation of study concepts, showing completion, in-progress, and locked topics
-• <b>Smart Study Planner</b> — Generates optimized daily agendas based on cognitive energy level, deadlines, and available hours
-• <b>ML Diagnostic Engine</b> — A Scikit-learn Random Forest Classifier analyzes quiz scores, study time, attempts, and error patterns to classify concept mastery states (Mastered / Review Needed / Critical Gap)
-• <b>Remedial Topic Injection</b> — When a Critical Gap is detected, the system automatically injects prerequisite remedial topics into the roadmap
-• <b>Proctored Exam Portal</b> — Anti-cheat features with tab-switch detection, peer-synced timers, and time-box enforcement
-• <b>Career Compass & Peer Community</b> — Additional modules for career pathway guidance and collaborative learning
-
-<strong>Tech Stack:</strong> Flask backend, SQLite database, Google Gemini API, Scikit-learn Random Forest, Bayesian Knowledge Tracing (BKT) principles.`
-  },
-  {
     id: "spam-detection",
     title: "Spam Email Detection",
     desc: "A supervised machine learning model classifying spam vs. ham using 13 custom engineered features, connected to Gmail IMAP for real-time inbox analysis and classification.",
@@ -173,6 +116,63 @@ This project is currently being rebuilt with an improved architecture. The v2 ve
 • Improved dataset with higher variety of deepfake techniques
 
 <strong>Tech Stack:</strong> Python, TensorFlow, Keras, NumPy, Matplotlib, Scikit-learn.`
+  },
+  {
+    id: "ytbt-cardio",
+    title: "YTBT Cardio NLP",
+    desc: "A 2D CNN + Transformer system translating 12-lead ECG waveform images into structured medical reports with a multi-role Flask web portal (Doctor, Patient, Technician, Admin) and SQLite audit logs.",
+    tags: ["PyTorch", "Transformers", "CNN", "NLP", "Flask", "SQLite"],
+    icon: "🫀",
+    github: "https://github.com/thanmayeereddy925/ECG_reportprediction_NLP",
+    images: [
+      "images/projects/image10.png",
+      "images/projects/image8.png",
+      "images/projects/image5.png",
+      "images/projects/image6.png"
+    ],
+    longDesc: `YTBT Cardio NLP is a multi-modal clinical diagnostic system that translates 12-lead ECG waveform grid images into structured cardiology text reports.
+
+<strong>Architecture:</strong> A 2D CNN Visual Encoder captures spatial patterns from the ECG grid image, feeding into a causal Transformer Decoder that generates the report token-by-token using a custom Byte-Pair Encoding (BPE) tokenizer trained on cardiology terminology.
+
+<strong>Multi-Role Flask Portal:</strong>
+• <b>Technician</b> — Uploads patient ECG PDF reports and triggers AI decoding
+• <b>Doctor (Cardiologist)</b> — Reviews AI-generated reports, corrects them, and adds final diagnosis
+• <b>Patient</b> — Views finalized reports, ECG images in lightbox, and submits health doubts to their doctor
+• <b>Admin/Receptionist</b> — Manages staff, maps patients to doctors, monitors analytics charts and audit logs
+
+<strong>Dataset:</strong> PTB-XL real clinical ECG records (21,000+ recordings), rendered as 12-lead grid PNG images.
+<strong>Training:</strong> 25 epochs with BPE tokenizer trained on a custom cardiology medical corpus.
+<strong>NLG Scores:</strong> BLEU & ROUGE-L evaluation for report quality.`
+  },
+  {
+    id: "studymind-ai",
+    title: "StudyMind AI",
+    desc: "An adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API with a Random Forest ML engine and proctored anti-cheat exam portal.",
+    tags: ["Flask", "Gemini API", "Machine Learning", "SQLite", "Scikit-learn"],
+    icon: "🧠",
+    github: "https://github.com/thanmayeereddy925",
+    images: [
+      "images/projects/image33.png",
+      "images/projects/image17.png",
+      "images/projects/image13.png",
+      "images/projects/image38.png",
+      "images/projects/image32.png",
+      "images/projects/image35.png",
+      "images/projects/image39.png",
+      "images/projects/image37.png"
+    ],
+    longDesc: `StudyMind AI is an intelligent, adaptive learning platform that personalizes a student's entire study journey from goal-setting to assessment.
+
+<strong>Core Features:</strong>
+• <b>AI Roadmap Generator</b> — Uses Google Gemini API to break any study goal into a week-by-week custom curriculum with prerequisite sequencing
+• <b>Interactive Knowledge Graph</b> — Visual node-based representation of study concepts, showing completion, in-progress, and locked topics
+• <b>Smart Study Planner</b> — Generates optimized daily agendas based on cognitive energy level, deadlines, and available hours
+• <b>ML Diagnostic Engine</b> — A Scikit-learn Random Forest Classifier analyzes quiz scores, study time, attempts, and error patterns to classify concept mastery states (Mastered / Review Needed / Critical Gap)
+• <b>Remedial Topic Injection</b> — When a Critical Gap is detected, the system automatically injects prerequisite remedial topics into the roadmap
+• <b>Proctored Exam Portal</b> — Anti-cheat features with tab-switch detection, peer-synced timers, and time-box enforcement
+• <b>Career Compass & Peer Community</b> — Additional modules for career pathway guidance and collaborative learning
+
+<strong>Tech Stack:</strong> Flask backend, SQLite database, Google Gemini API, Scikit-learn Random Forest, Bayesian Knowledge Tracing (BKT) principles.`
   },
   {
     id: "prod-tracker",
@@ -551,7 +551,7 @@ function initEditMode() {
     if (editHint) {
       editHint.innerHTML = isEditMode
         ? "<strong>Edit Mode Active:</strong> Click any text area (dashed outline) to edit directly. Hover over cards to upload images."
-        : "Click on any project card to view full details, screenshots, and GitHub repository link.";
+        : "Click on any project card to view full details, screenshots, and the GitHub repository link.";
     }
   });
 
