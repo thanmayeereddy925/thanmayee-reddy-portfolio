@@ -157,7 +157,7 @@ const PROJECTS = [
     desc: "An adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API with a Random Forest ML engine and proctored anti-cheat exam portal.",
     tags: ["Flask", "Gemini API", "Machine Learning", "SQLite", "Scikit-learn"],
     icon: "🧠",
-    github: "https://github.com/thanmayeereddy925/StudyMind",
+    github: "https://github.com/thanmayeereddy925/StudyMind-AI",
     images: [
       "images/projects/image33.png",
       "images/projects/image17.png",
