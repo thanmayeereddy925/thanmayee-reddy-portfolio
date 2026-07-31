@@ -284,7 +284,6 @@ document.addEventListener("DOMContentLoaded", () => {
   loadProfileImage();
   renderProjects();
   initActiveTabObserver();
-  initEditMode();
   initContactForm();
   initProjectModal();
 });
@@ -529,139 +528,7 @@ function initActiveTabObserver() {
   sections.forEach(sec => observer.observe(sec));
 }
 
-// ==========================================================================
-// 6. EDIT MODE CONTROLLER
-// ==========================================================================
-function initEditMode() {
-  const editToggleBtn = document.getElementById("editToggleBtn");
-  const profileUploadInput = document.getElementById("profileUploadInput");
-  const saveCodeBtn = document.getElementById("saveCodeBtn");
-  const resetStorageBtn = document.getElementById("resetStorageBtn");
 
-  const codeModal = document.getElementById("codeModal");
-  const modalClose = document.getElementById("modalClose");
-  const downloadHtmlBtn = document.getElementById("downloadHtmlBtn");
-  const downloadJsBtn = document.getElementById("downloadJsBtn");
-
-  editToggleBtn?.addEventListener("click", () => {
-    const isEditMode = document.body.classList.toggle("edit-mode");
-
-    document.querySelectorAll("[data-editable-id]").forEach(el => {
-      el.contentEditable = isEditMode ? "true" : "false";
-      if (isEditMode) {
-        attachTextListener(el);
-      }
-    });
-
-    editToggleBtn.querySelector("span").textContent = isEditMode ? "Exit Edit Mode" : "Edit Portfolio";
-    const editHint = document.getElementById("editHint");
-    if (editHint) {
-      editHint.innerHTML = isEditMode
-        ? "<strong>Edit Mode Active:</strong> Click any text area (dashed outline) to edit directly. Hover over cards to upload images."
-        : "Click on any project card to view full details, screenshots, and the GitHub repository link.";
-    }
-  });
-
-  profileUploadInput?.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      localStorage.setItem(KEYS.profileImage, reader.result);
-      document.getElementById("profileImg").src = reader.result;
-    };
-    reader.readAsDataURL(file);
-  });
-
-  saveCodeBtn?.addEventListener("click", () => {
-    codeModal.classList.add("active");
-  });
-
-  modalClose?.addEventListener("click", () => {
-    codeModal.classList.remove("active");
-  });
-
-  window.addEventListener("click", (e) => {
-    if (e.target === codeModal) {
-      codeModal.classList.remove("active");
-    }
-  });
-
-  resetStorageBtn?.addEventListener("click", () => {
-    if (confirm("Reset all edits? This will restore default content and clear uploaded images.")) {
-      localStorage.removeItem(KEYS.text);
-      localStorage.removeItem(KEYS.projectImages);
-      localStorage.removeItem(KEYS.profileImage);
-      alert("Cleared! Reloading page...");
-      window.location.reload();
-    }
-  });
-
-  downloadHtmlBtn?.addEventListener("click", () => {
-    generateAndDownloadHtml();
-  });
-
-  downloadJsBtn?.addEventListener("click", () => {
-    generateAndDownloadJs();
-  });
-}
-
-function attachTextListener(el) {
-  el.addEventListener("blur", () => {
-    saveTextOverride(el.dataset.editableId, el.innerHTML);
-  });
-}
-
-// ==========================================================================
-// 7. DYNAMIC EXPORTS
-// ==========================================================================
-async function generateAndDownloadHtml() {
-  try {
-    const res = await fetch("index.html");
-    let htmlContent = await res.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlContent, "text/html");
-    const textOverrides = JSON.parse(localStorage.getItem(KEYS.text)) || {};
-    doc.querySelectorAll("[data-editable-id]").forEach(el => {
-      const id = el.dataset.editableId;
-      if (textOverrides[id] !== undefined) {
-        el.innerHTML = textOverrides[id];
-      }
-    });
-    doc.body.classList.remove("edit-mode");
-    doc.querySelectorAll(".nav-tab").forEach(tab => tab.classList.remove("active"));
-    const aboutTab = doc.querySelector('.nav-tab[href="#about"]');
-    if (aboutTab) aboutTab.classList.add("active");
-    const outputHtml = "<!DOCTYPE html>\n" + doc.documentElement.outerHTML;
-    triggerDownload(outputHtml, "index.html", "text/html");
-  } catch (e) {
-    console.error(e);
-    alert("Error compiling index.html. Check console.");
-  }
-}
-
-async function generateAndDownloadJs() {
-  try {
-    const res = await fetch("script.js");
-    let jsContent = await res.text();
-    triggerDownload(jsContent, "script.js", "application/javascript");
-  } catch (e) {
-    console.error(e);
-    alert("Error compiling script.js. Check console.");
-  }
-}
-
-function triggerDownload(content, filename, contentType) {
-  const blob = new Blob([content], { type: contentType });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
 
 // ==========================================================================
 // 8. CONTACT FORM SUBMISSION

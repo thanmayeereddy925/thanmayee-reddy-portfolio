@@ -90,12 +90,6 @@
           <div class="profile-glow"></div>
           <div class="profile-image-frame">
             <img src="images/profile.jpg" alt="Thanmayee Reddy Portrait" class="profile-img" id="profileImg" />
-            <div class="profile-card-edit" id="profileEditOverlay">
-              <label for="profileUploadInput">
-                <span>Update Photo</span>
-                <input type="file" id="profileUploadInput" accept="image/*" />
-              </label>
-            </div>
           </div>
           <div class="availability-badge">
             <span class="pulse-dot"></span>
@@ -444,47 +438,6 @@
         <a href="https://github.com/thanmayeereddy925" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
-  </footer>
-
-  <!-- ============ EDIT MODE FLOATING ACTION BAR ============ -->
-  <div class="edit-controls-container" id="editControls">
-    <button class="btn-edit-toggle" id="editToggleBtn" title="Toggle Edit Mode">
-      <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-      <span>Edit Portfolio</span>
-    </button>
-    <div class="edit-menu" id="editMenu">
-      <button class="edit-menu-btn btn-success" id="saveCodeBtn">
-        💾 Export Code
-      </button>
-      <button class="edit-menu-btn btn-danger" id="resetStorageBtn">
-        🔄 Reset Defaults
-      </button>
-    </div>
-  </div>
-
-  <!-- Export Code Modal -->
-  <div class="modal" id="codeModal">
-    <div class="modal-content">
-      <span class="modal-close" id="modalClose">&times;</span>
-      <h3>Download Updated Files</h3>
-      <p>Any text edits and image uploads you made are currently saved in your browser's local storage. To save these permanently so everyone visiting your Vercel site can see them, you can download the updated `script.js` or `index.html` and push them to your repository!</p>
-      
-      <div class="modal-buttons">
-        <button class="btn btn-primary" id="downloadHtmlBtn">📥 Download index.html</button>
-        <button class="btn btn-primary" id="downloadJsBtn">📥 Download script.js</button>
-      </div>
-
-      <div class="modal-instructions">
-        <h4>How to update on Vercel:</h4>
-        <ol>
-          <li>Click the buttons above to download your modified files.</li>
-          <li>Replace the files in your portfolio directory on your computer.</li>
-          <li>Run <code>vercel --prod</code> (or push your changes to GitHub if auto-deploy is configured) to make them live for everyone!</li>
-        </ol>
-      </div>
-    </div>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
