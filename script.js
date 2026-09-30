@@ -273,7 +273,7 @@ const PROJECTS = [
 const KEYS = {
   text: "tr_portfolio_text_v1",
   projectImages: "tr_portfolio_proj_images_v1",
-  profileImage: "tr_portfolio_profile_image_v1"
+  profileImage: "tr_portfolio_profile_image_v2"
 };
 
 // ==========================================================================
@@ -301,6 +301,7 @@ function loadTextOverrides() {
 
 // Load saved profile photo
 function loadProfileImage() {
+  localStorage.removeItem("tr_portfolio_profile_image_v1");
   const savedProfile = localStorage.getItem(KEYS.profileImage);
   if (savedProfile) {
     document.getElementById("profileImg").src = savedProfile;
