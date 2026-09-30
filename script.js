@@ -3,72 +3,133 @@
 // ==========================================================================
 const PROJECTS = [
   {
-    id: "spam-detection",
-    title: "Spam Email Detection",
-    desc: "A supervised machine learning model classifying spam vs. ham using 13 custom engineered features, connected to Gmail IMAP for real-time inbox analysis and classification.",
-    tags: ["Machine Learning", "Scikit-Learn", "Python", "Pandas", "IMAP"],
-    icon: "✉️",
-    github: "https://github.com/thanmayeereddy925/spam_email_detector",
-    images: [
-      "images/projects/image20.png",
-      "images/projects/image26.png",
-      "images/projects/image16.png",
-      "images/projects/image19.png"
-    ],
-    longDesc: `<p>SpamShield is a real-time email classification system that connects directly to your active Gmail inbox via IMAP and evaluates messages against 13 custom-engineered structural and linguistic features.</p>
+    id: "plant-health-ai",
+    title: "AI Plant Health & Disease Detection",
+    desc: "A computer vision and agentic diagnostic system classifying plant leaf diseases with deep CNNs and Zero-Shot Learning to deliver automated agronomy treatment plans.",
+    tags: ["Computer Vision", "Deep Learning", "Agentic AI", "Agriculture", "FastAPI"],
+    icon: "🌱",
+    github: null,
+    images: [],
+    longDesc: `<p>The AI Plant Health Platform is an intelligent diagnostic system bridging high-throughput computer vision classification with an agentic reasoning engine to detect leaf diseases early and deliver actionable agronomy guidance to farmers.</p>
 
-<h4 class="modal-section-title">13-Feature Extraction Engine</h4>
+<h4 class="modal-section-title">Problem Statement</h4>
+<p>Delayed identification of crop foliar infections leads to massive agricultural losses and over-reliance on chemical pesticides. Smallholder farmers lack rapid access to plant pathology experts when outbreaks first appear.</p>
+
+<h4 class="modal-section-title">Solution Overview</h4>
+<p>A dual-stage diagnostic pipeline: an image classification backbone rapidly detects known leaf diseases from field photos, while a Zero-Shot semantic module flags rare strains. An agentic reasoning engine synthesizes the diagnosis with local environmental variables to generate organic and chemical treatment roadmaps.</p>
+
+<h4 class="modal-section-title">System Architecture</h4>
+<pre class="modal-arch-box">
+[ Field Leaf Photo ]
+        ↓
+[ Preprocessing & CLAHE Contrast Enhancement ]
+        ↓
+[ Deep CNN Feature Extractor (EfficientNet / ResNet) ]
+        ↓
+[ Zero-Shot Semantic Vector Alignment (for unseen strains) ]
+        ↓
+[ Pathogen Classification & Confidence Score ]
+        ↓
+[ Agentic Agronomy Reasoning Engine ]
+        ↓
+[ Actionable Organic / Chemical Remedy Plan + Dosage ]
+</pre>
+
+<h4 class="modal-section-title">Tech Stack</h4>
 <ul class="modal-bullet-list">
-  <li><b>Sender Domain:</b> Flags suspicious or disposable domain extensions (.xyz, .click, .top).</li>
-  <li><b>Subject Keywords:</b> Scans for high-risk spam triggers ("Winner", "Urgent", "Prize", "Claim").</li>
-  <li><b>Body Keywords:</b> Identifies monetary and security bait phrases ("Wire Transfer", "Verify Account", "Bitcoin").</li>
-  <li><b>URL Presence & Density:</b> Analyzes the total count and proportion of hyperlinked text.</li>
-  <li><b>Suspicious URL Patterns:</b> Detects raw IP addresses and unencrypted non-standard links.</li>
-  <li><b>Attachment Inspection:</b> Scans for attached files and flags dangerous extensions (.exe, .zip, .js, .vbs).</li>
-  <li><b>Formatting & Urgency Language:</b> Identifies artificial threat words ("Immediately", "Account Suspended", "Action Required").</li>
-  <li><b>Security Indicators:</b> Detects fake authentication claims and security alert spoofing.</li>
+  <li><b>Computer Vision & DL:</b> PyTorch, CNNs (ResNet, EfficientNet), Zero-Shot Learning, OpenCV.</li>
+  <li><b>Backend & Services:</b> Python, FastAPI microservice, REST API endpoints.</li>
+  <li><b>Data & Evaluation:</b> PlantVillage dataset (54,000+ leaf images across 38 crop disease classes).</li>
 </ul>
 
-<h4 class="modal-section-title">Real-Time IMAP Integration</h4>
+<h4 class="modal-section-title">My Key Contribution</h4>
 <ul class="modal-bullet-list">
-  <li><b>Live Inbox Connection:</b> Connects securely using Google App Password via Python's IMAP library.</li>
-  <li><b>Batch Analysis:</b> Pulls the latest 10–50 messages on demand and outputs a live visual Spam vs. Ham breakdown.</li>
-  <li><b>Dataset:</b> Trained on the SMS Spam Collection dataset, adapted and retrained with our custom 13-feature schema using Scikit-learn.</li>
+  <li><b>Image Pipeline:</b> Engineered leaf segmentation and background clutter removal to reduce false positives from field soil and weeds.</li>
+  <li><b>Zero-Shot Module:</b> Incorporated semantic embeddings to detect emerging disease variants without model retraining.</li>
+  <li><b>API Service:</b> Designed a high-throughput FastAPI microservice serving sub-second inference for mobile clients.</li>
+  <li><b>Internship Context:</b> Developed under active research and prototyping during internship at <b>QuGates Technologies</b>.</li>
+</ul>
+
+<h4 class="modal-section-title">Results & Future Improvements</h4>
+<ul class="modal-bullet-list">
+  <li><b>Performance:</b> High classification accuracy on multi-class crop datasets with sub-second inference latency.</li>
+  <li><b>Future Roadmap:</b> On-device edge deployment using TensorRT on autonomous agricultural drone cameras for wide-field surveys.</li>
 </ul>`
   },
   {
-    id: "iot-chatbot",
-    title: "IoT Hardware Chatbot (RAG)",
-    desc: "A retrieval-augmented generation chatbot for IoT sensors and microcontrollers, retrieving from technical documentation and Wikipedia API, with LLM-powered context-aware responses via a Flask interface.",
-    tags: ["RAG", "Flask", "LLM", "NLP", "Wikipedia API"],
+    id: "ultron-automation",
+    title: "Ultron — AI Desktop Automation",
+    desc: "An autonomous desktop assistant that translates spoken and text instructions into real-time operating system actions, application controls, and multi-step computer workflows.",
+    tags: ["Agentic AI", "Voice AI", "Automation", "Python", "OS Control"],
     icon: "🤖",
-    github: "https://github.com/thanmayeereddy925/iot_hardware_bot",
-    images: [
-      "images/projects/image15.png",
-      "images/projects/image29.png"
-    ],
-    longDesc: `<p>The IoT Hardware Chatbot is a domain-specific Retrieval-Augmented Generation (RAG) assistant designed to provide accurate technical assistance for microcontrollers, sensors, actuators, and embedded electronics.</p>
+    github: null,
+    images: [],
+    longDesc: `<p>Ultron is an autonomous desktop automation agent that converts natural-language voice and text commands into automated operating system controls, application orchestrations, and productivity workflows.</p>
 
-<h4 class="modal-section-title">RAG System Architecture</h4>
+<h4 class="modal-section-title">Problem Statement</h4>
+<p>Repetitive desktop tasks—such as launching specific workspaces, controlling media, organizing file directories, and looking up technical docs—require constant manual mouse and keyboard interactions that break creative focus.</p>
+
+<h4 class="modal-section-title">Solution Overview</h4>
+<p>An autonomous agent loop that combines Speech-to-Text with an LLM-based action planner. Spoken commands are parsed into structured intent parameters and mapped to safe native OS tools (PyAutoGUI, subprocesses, system APIs) with real-time audio and visual feedback.</p>
+
+<h4 class="modal-section-title">Interactive Workflow Example</h4>
+<pre class="modal-arch-box">
+User Spoken Command:
+"Open Spotify and play my coding playlist"
+       ↓
+Speech-to-Text Transcription (Whisper / SpeechRecognition)
+       ↓
+Intent Understanding & Entity Extraction (LLM Agent)
+       ↓
+Action Planning Engine (Safety Guardrails Verified)
+       ↓
+Tool Invocation (App Launcher → Window Focus → Media Key Dispatch)
+       ↓
+Spotify Launches → Search Triggered → Coding Playlist Plays
+</pre>
+
+<h4 class="modal-section-title">System Architecture</h4>
+<pre class="modal-arch-box">
+[ Spoken / Typed Prompt ]
+           ↓
+[ Audio Transcription (Whisper Engine) ]
+           ↓
+[ LLM Intent & Parameter Extraction ]
+           ↓
+[ Multi-Step Action Planner & Safety Checks ]
+           ↓
+[ Tool Dispatcher (App Control, Browser Automation, File System) ]
+           ↓
+[ Native OS Execution via PyAutoGUI & Subprocesses ]
+           ↓
+[ Visual Notification & TTS Confirmation Feedback ]
+</pre>
+
+<h4 class="modal-section-title">Tech Stack</h4>
 <ul class="modal-bullet-list">
-  <li><b>Document Retrieval Engine:</b> Indexes a local knowledge base of technical datasheets and pinout guides for Arduino Uno, ESP8266, ESP32, and common sensor modules.</li>
-  <li><b>Wikipedia API Fallback:</b> Dynamically fetches Wikipedia context in real time for hardware components not present in the local database.</li>
-  <li><b>LLM Synthesis:</b> Injects retrieved context into prompt pipelines to generate hallucination-free, technical responses.</li>
-  <li><b>Web Interface:</b> Flask-backed dark-slate conversational interface supporting code block formatting and syntax highlighting.</li>
+  <li><b>Core Engine:</b> Python, SpeechRecognition, PyAudio, Pyttsx3 / TTS.</li>
+  <li><b>Agent Logic:</b> LLM Prompt Orchestration, Structured JSON Tool Calling, Task Planner.</li>
+  <li><b>OS Automation:</b> PyAutoGUI, OS Subprocesses, Keyboard/Mouse Hooks.</li>
 </ul>
 
-<h4 class="modal-section-title">Supported Technical Queries</h4>
+<h4 class="modal-section-title">My Key Contribution</h4>
 <ul class="modal-bullet-list">
-  <li><b>Pinouts & Wiring:</b> Instant pin connection guidance for I2C, SPI, UART, and analog inputs.</li>
-  <li><b>Troubleshooting:</b> Debugging common hardware errors, voltage level shifting, and baud rate mismatches.</li>
-  <li><b>Code Snippets:</b> Pre-formatted C/C++ (Arduino IDE) initialization code for instant testing.</li>
+  <li><b>Voice Trigger Loop:</b> Built asynchronous microphone capture with noise filtering for continuous listening without freezing the interface.</li>
+  <li><b>Intent Parser:</b> Structured natural language into verifiable JSON tool payloads with strict parameter validation.</li>
+  <li><b>Safety Guardrails:</b> Implemented whitelist protections ensuring system critical commands cannot be triggered inadvertently.</li>
+</ul>
+
+<h4 class="modal-section-title">Results & Future Improvements</h4>
+<ul class="modal-bullet-list">
+  <li><b>Performance:</b> Seamless hands-free multitasking with low end-to-end voice latency.</li>
+  <li><b>Future Roadmap:</b> Vision-Language grounding (allowing Ultron to "see" and click visual UI elements on screen) and LangGraph agent coordination.</li>
 </ul>`
   },
   {
     id: "accident-detection",
-    title: "Accident Detection using Deep Learning",
-    desc: "An AI-based computer vision system that detects road accidents from uploaded images using a trained CNN (TensorFlow/Keras) + YOLOv8 model, with Telegram alert integration when an accident is detected.",
-    tags: ["TensorFlow", "Keras", "YOLOv8", "Flask", "Computer Vision", "Telegram API"],
+    title: "Accident Detection & Road Safety Vision",
+    desc: "An AI-based computer vision system that detects road accidents from surveillance imagery using custom CNN + YOLOv8 models and dispatches emergency Telegram alerts with GPS coordinates.",
+    tags: ["TensorFlow", "Keras", "YOLOv8", "Computer Vision", "Telegram API", "Flask"],
     icon: "🚗",
     github: "https://github.com/thanmayeereddy925/accident_detection",
     images: [
@@ -77,54 +138,140 @@ const PROJECTS = [
       "images/projects/image23.png",
       "images/projects/image18.png"
     ],
-    longDesc: `<p>An automated computer vision safety application that detects vehicular accidents from image feeds and dispatches emergency location alerts to emergency channels via Telegram.</p>
+    longDesc: `<p>An automated computer vision safety application that detects vehicular accidents from video feeds or camera snapshots and dispatches emergency location alerts with GPS coordinates via Telegram.</p>
+
+<h4 class="modal-section-title">Problem Statement</h4>
+<p>Traffic collisions on highways and intersections often go unnoticed for critical minutes, delaying emergency medical response and risking lives. Automated monitoring is essential for instant dispatch.</p>
+
+<h4 class="modal-section-title">Solution Overview</h4>
+<p>A dual-model computer vision pipeline: an image classification CNN identifies collision probability, while YOLOv8 localizes damaged vehicle boundaries. When confirmed, browser GPS coordinates are fetched and dispatched to emergency Telegram channels in under 3 seconds.</p>
 
 <h4 class="modal-section-title">Detection & Alert Pipeline</h4>
+<pre class="modal-arch-box">
+[ Traffic Camera Feed / Snapshot ]
+               ↓
+[ CNN Classification (accident_model_final.h5) ]
+               ↓
+[ YOLOv8 Object Detection (best.pt / ONNX Bounding Boxes) ]
+               ↓
+[ Severity Threshold Confirmation (Confidence &gt; 80%) ]
+               ↓
+[ GPS Coordinate Extraction ]
+               ↓
+[ Telegram Bot Emergency Dispatch with Google Maps Link ]
+</pre>
+
+<h4 class="modal-section-title">Tech Stack</h4>
 <ul class="modal-bullet-list">
-  <li><b>Image Input:</b> Upload traffic camera snapshots or accident imagery through the web portal.</li>
-  <li><b>CNN Classification:</b> Evaluates image using a custom-trained Keras model (<code>accident_model_final.h5</code>) to output accident confidence percentage.</li>
-  <li><b>YOLOv8 Object Detection:</b> Applies bounding box object detection (<code>best.pt</code> / <code>best.onnx</code>) to pinpoint damaged vehicle regions.</li>
-  <li><b>GPS Emergency Alert:</b> When an accident is confirmed, the browser requests GPS coordinates and dispatches a Google Maps location link directly to an emergency Telegram channel via Bot API.</li>
+  <li><b>Deep Learning:</b> TensorFlow, Keras, YOLOv8 (ONNX & PyTorch backends), OpenCV.</li>
+  <li><b>Backend & Deployment:</b> Python, Flask web server, REST API.</li>
+  <li><b>Integration:</b> Telegram Bot API, Geolocation API.</li>
 </ul>
 
-<h4 class="modal-section-title">Model Training & Deployment</h4>
+<h4 class="modal-section-title">My Key Contribution</h4>
 <ul class="modal-bullet-list">
-  <li><b>Dataset:</b> Trained on curated road crash and traffic camera datasets.</li>
-  <li><b>Deployment:</b> Lightweight Flask web server with live progress indicator, confidence meter, and Telegram log feedback.</li>
+  <li><b>Model Training:</b> Trained the custom CNN classifier on curated vehicle crash datasets and fine-tuned YOLOv8 for vehicle damage localization.</li>
+  <li><b>Alert Integration:</b> Engineered the automated Telegram emergency bot pipeline that formats timestamped alerts with live Google Maps navigation links.</li>
+  <li><b>Web Interface:</b> Created a lightweight Flask interface featuring real-time image upload, confidence progress meters, and detection logs.</li>
 </ul>`
   },
   {
-    id: "deepfake-detection",
-    title: "Deepfake Detection using Deep Learning",
-    desc: "A deep learning binary classifier to detect AI-generated or manipulated media (deepfakes) using CNN-based feature extraction. Initial version complete — currently being rebuilt with improved architecture from scratch.",
-    tags: ["TensorFlow", "Keras", "CNN", "Computer Vision", "Binary Classification"],
-    icon: "👥",
-    github: "https://github.com/thanmayeereddy925/Deepfake",
+    id: "smart-agri",
+    title: "Smart Irrigation & Rain Alert System",
+    desc: "An automated agricultural hardware system monitoring soil moisture, temperature, humidity, and rainfall via Arduino/ESP8266 with automated relay pump control and an audio rain buzzer alarm.",
+    tags: ["IoT", "Automation", "Sensors", "Arduino", "Embedded Systems"],
+    icon: "🌾",
+    github: null,
     images: [
-      "images/projects/image27.png",
-      "images/projects/image31.png",
-      "images/projects/image21.png"
+      "images/projects/image12.jpg"
     ],
-    longDesc: `<p>This project implements a computer vision classifier designed to distinguish authentic human facial imagery from AI-generated or manipulated deepfake images.</p>
+    longDesc: `<p>An embedded IoT agricultural system engineered to automate soil moisture monitoring, closed-loop irrigation, and real-time weather event alerting.</p>
 
-<h4 class="modal-section-title">Version 1 (Initial Release)</h4>
+<h4 class="modal-section-title">Problem Statement</h4>
+<p>Excessive watering and unexpected heavy rainfall cause crop root damage, water wastage, and fertilizer runoff. Farmers require automated irrigation threshold triggers and immediate rain warnings.</p>
+
+<h4 class="modal-section-title">System Architecture & Circuit</h4>
+<pre class="modal-arch-box">
+[ Soil Moisture + Raindrop + DHT11 Sensors ]
+                     ↓
+[ Arduino Uno (Main Microcontroller & Logic Engine) ]
+                     ↓
+       ┌─────────────┴─────────────┐
+       ↓                           ↓
+[ Soil Moisture &lt; Threshold ]    [ Rain Detected on Module ]
+       ↓                           ↓
+[ 5V Relay Activates Pump ]      [ Piezoelectric Buzzer Alarms ]
+</pre>
+
+<h4 class="modal-section-title">Hardware Components</h4>
 <ul class="modal-bullet-list">
-  <li><b>Model Baseline:</b> Convolutional Neural Network trained using TensorFlow / Keras.</li>
-  <li><b>Dataset:</b> Evaluated on the Roboflow Deepfake Detection Dataset (real vs. fake facial crops).</li>
-  <li><b>Output:</b> Sigmoid classification score indicating the likelihood of synthetic manipulation.</li>
+  <li><b>Microcontrollers:</b> Arduino Uno (real-time sensor sampling & logic execution) + ESP8266 NodeMCU.</li>
+  <li><b>Sensors:</b> Capacitive soil moisture sensor, DHT11 (ambient temperature & humidity), raindrop sensor plate.</li>
+  <li><b>Actuators:</b> 5V single-channel relay module, 12V submersible water pump, piezoelectric buzzer.</li>
 </ul>
 
-<h4 class="modal-section-title">Version 2 (Current Architecture Rebuild)</h4>
+<h4 class="modal-section-title">College Project Expo Achievement</h4>
 <ul class="modal-bullet-list">
-  <li><b>Enhanced Backbone:</b> Transitioning to ResNet50 with spatial attention mechanisms for finer edge artifact detection.</li>
-  <li><b>Temporal Verification:</b> Adding frame-by-frame temporal analysis for deepfake video detection.</li>
+  <li>🏆 <b>Winner — 1st Place:</b> Awarded first prize at the College Project Expo for demonstrating live automated irrigation switching and sensory alert pipelines to faculty judges.</li>
+</ul>
+
+<h4 class="modal-section-title">My Key Contribution</h4>
+<ul class="modal-bullet-list">
+  <li><b>Circuit Architecture:</b> Breadboard circuit design, pin mapping, voltage division, and relay isolation protection.</li>
+  <li><b>Firmware Programming:</b> Wrote C++ logic for sensor hysteresis calibration, moisture thresholds, and rain alarm triggers.</li>
+  <li><b>Expo Demonstration:</b> Led the technical presentation explaining the real-world agricultural impact and sensory data pipeline.</li>
+</ul>`
+  },
+  {
+    id: "iot-chatbot",
+    title: "IoT Hardware Chatbot (RAG System)",
+    desc: "A domain-specific Retrieval-Augmented Generation (RAG) assistant for microcontrollers and sensors, indexing local technical datasheets with Wikipedia API fallback and context-aware responses.",
+    tags: ["RAG", "GenAI", "LLMs", "Flask", "NLP", "Wikipedia API"],
+    icon: "💡",
+    github: "https://github.com/thanmayeereddy925/iot_hardware_bot",
+    images: [
+      "images/projects/image15.png",
+      "images/projects/image29.png"
+    ],
+    longDesc: `<p>The IoT Hardware Chatbot is a domain-specific Retrieval-Augmented Generation (RAG) assistant designed to provide accurate pinouts, wiring diagrams, and code snippets for microcontrollers and sensors.</p>
+
+<h4 class="modal-section-title">Problem Statement</h4>
+<p>Hardware developers and engineering students waste excessive time navigating 500-page microcontroller datasheets to confirm pin assignments, I2C/SPI bus addresses, and voltage tolerances.</p>
+
+<h4 class="modal-section-title">RAG System Architecture</h4>
+<pre class="modal-arch-box">
+[ User Technical Query (e.g. "ESP8266 I2C SDA pin") ]
+                     ↓
+[ Query Embedding & Semantic Search ]
+                     ↓
+[ Local Knowledge Base (Datasheets, Pinouts, ESP/Arduino Specs) ]
+                     ↓
+[ Wikipedia API Fallback Search (if component is novel) ]
+                     ↓
+[ Context Injection into Prompt Pipeline ]
+                     ↓
+[ LLM Synthesizes Hallucination-Free Technical Answer + C++ Code ]
+</pre>
+
+<h4 class="modal-section-title">Tech Stack</h4>
+<ul class="modal-bullet-list">
+  <li><b>RAG Pipeline:</b> Python, Text Chunking, Embeddings, Wikipedia API Dynamic Fallback.</li>
+  <li><b>Backend & UI:</b> Flask web framework, conversational chat UI with syntax-highlighted code blocks.</li>
+  <li><b>Hardware Coverage:</b> Arduino Uno, ESP8266 NodeMCU, ESP32, and 20+ common sensor/actuator modules.</li>
+</ul>
+
+<h4 class="modal-section-title">My Key Contribution</h4>
+<ul class="modal-bullet-list">
+  <li><b>Knowledge Indexing:</b> Extracted and structured pinout matrices and register configurations from manufacturer datasheets into a clean local retrieval corpus.</li>
+  <li><b>Dynamic Fallback:</b> Programmed automated Wikipedia API retrieval queries when local vector similarity thresholds were not met.</li>
+  <li><b>Web Interface:</b> Developed a responsive Flask interface with code copy buttons and query suggestions.</li>
 </ul>`
   },
   {
     id: "ytbt-cardio",
-    title: "YTBT Cardio NLP",
-    desc: "A 2D CNN + Transformer system translating 12-lead ECG waveform images into structured medical reports with a multi-role Flask web portal (Doctor, Patient, Technician, Admin) and SQLite audit logs.",
-    tags: ["PyTorch", "Transformers", "CNN", "NLP", "Flask", "SQLite"],
+    title: "YTBT Cardio NLP — ECG to Medical Report Translation",
+    desc: "A clinical deep learning system translating 12-lead ECG waveform images into structured medical reports with a multi-role Flask web portal (Doctor, Patient, Technician, Admin) and SQLite audit logs.",
+    tags: ["PyTorch", "Transformers", "2D CNN", "NLP", "Flask", "SQLite"],
     icon: "🫀",
     github: "https://github.com/thanmayeereddy925/ECG_reportprediction_NLP",
     images: [
@@ -135,27 +282,43 @@ const PROJECTS = [
     ],
     longDesc: `<p>YTBT Cardio NLP is a clinical AI system that translates 12-lead electrocardiogram (ECG) grid images directly into structured cardiology diagnostic text reports.</p>
 
+<h4 class="modal-section-title">Problem Statement</h4>
+<p>Interpreting 12-lead ECG waveforms requires specialized cardiologists. In rural or overwhelmed clinics, delayed interpretation slows critical treatment for acute cardiac conditions.</p>
+
 <h4 class="modal-section-title">Deep Learning Architecture</h4>
+<pre class="modal-arch-box">
+[ 12-Lead ECG Waveform Grid Image ]
+                 ↓
+[ 2D CNN Visual Encoder (Extracts Spatial Waveform Geometry) ]
+                 ↓
+[ Feature Vector Projection ]
+                 ↓
+[ Transformer Decoder with Specialized Clinical BPE Tokenizer ]
+                 ↓
+[ Auto-Regressive Report Generation (Rhythm, Axis, Ischemia Findings) ]
+                 ↓
+[ Multi-Role Clinical Portal with Doctor Review & Prescriptions ]
+</pre>
+
+<h4 class="modal-section-title">Tech Stack & Dataset</h4>
 <ul class="modal-bullet-list">
-  <li><b>2D CNN Visual Encoder:</b> Extracts spatial waveform features across 12-lead grid layouts.</li>
-  <li><b>Transformer Decoder:</b> Generates medical diagnosis text auto-regressively token-by-token.</li>
-  <li><b>Custom BPE Tokenizer:</b> Trained on a specialized cardiology corpus to handle complex medical terminology.</li>
-  <li><b>Dataset & Evaluation:</b> Trained on 21,000+ clinical ECGs from the PTB-XL dataset; scored using BLEU and ROUGE-L metrics.</li>
+  <li><b>Deep Learning:</b> PyTorch, 2D CNN Encoder, Transformer Decoder, Custom BPE Tokenizer.</li>
+  <li><b>Dataset & Metrics:</b> Trained on 21,000+ clinical ECGs from the PTB-XL benchmark; evaluated with BLEU and ROUGE-L scores.</li>
+  <li><b>Clinical Portal:</b> Flask, SQLite database, role-based access control (Doctor, Patient, Technician, Admin).</li>
 </ul>
 
-<h4 class="modal-section-title">Multi-Role Clinical Portal</h4>
+<h4 class="modal-section-title">My Key Contribution</h4>
 <ul class="modal-bullet-list">
-  <li><b>Technician Role:</b> Uploads ECG PDFs, extracts grid images, and triggers AI decoding.</li>
-  <li><b>Doctor (Cardiologist) Role:</b> Reviews AI reports, edits findings, adds prescriptions, and answers patient queries.</li>
-  <li><b>Patient Role:</b> Accesses finalized reports, views high-resolution ECG images in a lightbox, and submits health doubts.</li>
-  <li><b>Admin Role:</b> Manages doctor-patient assignments, views analytics charts, and monitors security audit logs.</li>
+  <li><b>Preprocessing:</b> Converted raw medical ECG records into cleaned, standardized image representations with grid artifact normalization.</li>
+  <li><b>Model Engineering:</b> Trained the combined vision-to-language model and specialized the BPE tokenizer for cardiology terminology.</li>
+  <li><b>Role-Based System:</b> Designed the multi-tier medical portal ensuring patient privacy, technician upload pipelines, and doctor sign-off workflows.</li>
 </ul>`
   },
   {
     id: "studymind-ai",
-    title: "StudyMind AI",
-    desc: "An adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API with a Random Forest ML engine and proctored anti-cheat exam portal.",
-    tags: ["Flask", "Gemini API", "Machine Learning", "SQLite", "Scikit-learn"],
+    title: "StudyMind AI — Adaptive Learning & Mastery Navigator",
+    desc: "An adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API with a Random Forest ML mastery diagnostic engine.",
+    tags: ["Flask", "Gemini API", "Machine Learning", "Scikit-learn", "SQLite"],
     icon: "🧠",
     github: "https://github.com/thanmayeereddy925/StudyMind-AI",
     images: [
@@ -168,23 +331,46 @@ const PROJECTS = [
       "images/projects/image39.png",
       "images/projects/image37.png"
     ],
-    longDesc: `<p>StudyMind AI is an adaptive learning navigator that creates personalized study roadmaps, optimizes daily study timetables, and evaluates student mastery using Machine Learning.</p>
+    longDesc: `<p>StudyMind AI is an adaptive learning navigator that creates personalized curriculum roadmaps, optimizes daily study agendas, and identifies concept mastery using Machine Learning.</p>
 
-<h4 class="modal-section-title">Core Features & Architecture</h4>
+<h4 class="modal-section-title">System Architecture</h4>
+<pre class="modal-arch-box">
+[ Subject Goal & Available Hours ]
+                ↓
+[ Gemini API Curriculum Roadmap Generator ]
+                ↓
+[ Node-Based Knowledge Graph & Dynamic Daily Agenda ]
+                ↓
+[ Proctored Anti-Cheat Quiz & Diagnostic Testing ]
+                ↓
+[ Scikit-Learn Random Forest Mastery Classifier ]
+                ↓
+  ┌─────────────┴─────────────┐
+  ↓                           ↓
+[ Concept Mastered ]   [ Critical Gap Detected ]
+                              ↓
+               [ Auto-Inject Remedial Roadmap Topic ]
+</pre>
+
+<h4 class="modal-section-title">Tech Stack</h4>
 <ul class="modal-bullet-list">
-  <li><b>AI Curriculum Roadmap Generator:</b> Powered by Google Gemini API to construct week-by-week prerequisite-sequenced learning paths.</li>
-  <li><b>Interactive Knowledge Graph:</b> Visual node-based graph tracking completed, active, and locked study modules.</li>
-  <li><b>Dynamic Study Planner:</b> Creates time-slotted daily agendas based on target study hours and cognitive energy state.</li>
-  <li><b>ML Mastery Diagnostic Engine:</b> Scikit-learn Random Forest Classifier evaluates quiz scores, error patterns, and study velocity to classify concept mastery (Mastered / Review Needed / Critical Gap).</li>
-  <li><b>Remedial Auto-Injection:</b> Automatically inserts prerequisite remedial topics into the student's roadmap when a Critical Gap is identified.</li>
-  <li><b>Proctored Exam System:</b> Includes tab-switch detection, synchronized countdown timers, and auto-submission enforcement.</li>
+  <li><b>Core Engine:</b> Python, Flask, Google Gemini API, Scikit-learn (Random Forest).</li>
+  <li><b>Database & Storage:</b> SQLite relational database tracking student velocity, quiz submissions, and topics.</li>
+  <li><b>Exam Features:</b> Proctored exam portal with tab-switch detection, countdown timers, and auto-submission.</li>
+</ul>
+
+<h4 class="modal-section-title">My Key Contribution</h4>
+<ul class="modal-bullet-list">
+  <li><b>Roadmap Generation:</b> Structured prompt engineering pipelines that return week-by-week prerequisite-sequenced learning paths.</li>
+  <li><b>Diagnostic Engine:</b> Built the Random Forest classification model categorizing concept mastery (Mastered vs. Review Needed vs. Critical Gap).</li>
+  <li><b>Auto-Remediation:</b> Engineered the graph update routine that injects prerequisite foundational modules into the roadmap when critical knowledge gaps are detected.</li>
 </ul>`
   },
   {
     id: "prod-tracker",
     title: "AI Workforce Productivity Tracker",
-    desc: "An intelligent productivity & task management system with multi-role dashboards (Manager/Employee/Admin), AI-powered suspicious activity detection, manager feedback loops, and work log analytics using Flask and SQLite.",
-    tags: ["Machine Learning", "Flask", "AI", "SQLite", "Data Analysis"],
+    desc: "An intelligent productivity and task management system featuring multi-role dashboards (Manager, Employee, Admin), ML-based work log anomaly detection, and project analytics using Flask and SQLite.",
+    tags: ["Machine Learning", "Flask", "SQLite", "Data Analytics"],
     icon: "📈",
     github: "https://github.com/thanmayeereddy925/AI-Productivity-Tracker",
     images: [
@@ -193,78 +379,22 @@ const PROJECTS = [
       "images/projects/image1.png",
       "images/projects/image22.png",
       "images/projects/image9.png",
-      "images/projects/image30.png",
-      "images/projects/image11.png",
-      "images/projects/image3.png",
-      "images/projects/image4.png",
-      "images/projects/image2.png",
-      "images/projects/image25.png",
-      "images/projects/image24.png"
+      "images/projects/image30.png"
     ],
-    longDesc: `<p>The AI Workforce Productivity & Task Management System is a enterprise dashboard application providing structured task allocation, work logging, and automated performance tracking.</p>
+    longDesc: `<p>The AI Workforce Productivity Tracker is an enterprise dashboard application delivering structured task allocation, work logging, and automated performance anomaly tracking.</p>
 
-<h4 class="modal-section-title">Role-Based Dashboard Features</h4>
+<h4 class="modal-section-title">Core Architecture & Features</h4>
 <ul class="modal-bullet-list">
-  <li><b>Manager Portal:</b> Task creation with priority levels (High/Medium/Low), employee progress tracking, work entry verification, and log audits.</li>
-  <li><b>Employee Portal:</b> Task board view, active hour logging, submission of task proof, and feedback tracking.</li>
-  <li><b>Admin Control Panel:</b> User account provisioning, role management, and global organization metrics.</li>
+  <li><b>Multi-Role Dashboard:</b> Dedicated portals for Managers (task assignment, progress tracking, audits), Employees (task logging, proof submission), and Admins (user provisioning).</li>
+  <li><b>Suspicious Activity Detection:</b> Machine learning engine flags work log anomalies, rapid duplicate submissions, and irregular hour spikes.</li>
+  <li><b>Manager Review Feedback Loop:</b> Structured feedback system allowing managers to provide objection reasons upon task review.</li>
+  <li><b>Time Analytics:</b> Comparative visualization tracking estimated vs. actual project completion hours.</li>
 </ul>
 
-<h4 class="modal-section-title">AI & Analytics Capabilities</h4>
+<h4 class="modal-section-title">Tech Stack</h4>
 <ul class="modal-bullet-list">
-  <li><b>Suspicious Activity Detection:</b> Machine learning engine flags work log anomalies (e.g. zero hours logged for complex tasks, rapid re-submissions).</li>
-  <li><b>Manager Feedback Loop:</b> Built-in review system allowing managers to provide written feedback or objection reasons upon task rejection.</li>
-  <li><b>Time Analytics:</b> Comparative charts analyzing estimated vs. actual project completion hours.</li>
-</ul>`
-  },
-  {
-    id: "plant-disease",
-    title: "Plant Disease Detection",
-    desc: "A computer vision application using Deep Learning (CNNs) and Zero Shot Learning to detect and classify plant diseases from leaf images. Currently under active development as part of an internship project at QuGates Technologies.",
-    tags: ["Deep Learning", "FastAPI", "CNN", "Zero Shot Learning", "Computer Vision"],
-    icon: "🌱",
-    github: null,
-    images: [],
-    longDesc: `<p>The Plant Disease Detection project applies Deep Learning to analyze leaf photos and identify plant diseases early, providing actionable insights for agricultural health.</p>
-
-<h4 class="modal-section-title">Project Context & Status</h4>
-<ul class="modal-bullet-list">
-  <li><b>Internship Project:</b> Developed as part of an AI engineering internship at <b>QuGates Technologies</b>.</li>
-  <li><b>Development Status:</b> Under active development — full source code repository and documentation will be published upon completion.</li>
-</ul>
-
-<h4 class="modal-section-title">Technical Architecture & Features</h4>
-<ul class="modal-bullet-list">
-  <li><b>CNN Backbone:</b> Fine-tuned EfficientNet / ResNet feature extractors trained on 54,000+ images from the PlantVillage dataset across 38 disease classes.</li>
-  <li><b>Zero Shot Learning:</b> Incorporates semantic vector embeddings to identify novel or rare plant diseases without full retraining.</li>
-  <li><b>FastAPI Microservice:</b> High-throughput REST API for rapid leaf image inference.</li>
-  <li><b>Field Integration:</b> Mobile-friendly web upload interface designed for agricultural field workers.</li>
-</ul>`
-  },
-  {
-    id: "smart-agri",
-    title: "IoT Smart Agriculture System",
-    desc: "A smart agriculture setup using environmental sensors (temperature, humidity, soil moisture, raindrops) connected via Arduino/ESP8266 with an automated relay pump and rain alarm buzzer.",
-    tags: ["IoT", "Arduino", "ESP8266", "Sensors", "Embedded Systems"],
-    icon: "🌾",
-    github: null,
-    images: [
-      "images/projects/image12.jpg"
-    ],
-    longDesc: `<p>The IoT-Based Smart Agricultural System is a complete embedded hardware project designed to automate soil moisture monitoring, smart irrigation, and weather event detection.</p>
-
-<h4 class="modal-section-title">Hardware Components & Circuit</h4>
-<ul class="modal-bullet-list">
-  <li><b>Microcontrollers:</b> Arduino Uno (main sensor processing & logic execution) + ESP8266 NodeMCU (Wi-Fi data transmission).</li>
-  <li><b>Soil Moisture Sensor:</b> Continuously checks soil hydration levels to automate smart irrigation.</li>
-  <li><b>DHT11 Sensor:</b> Monitors real-time ambient temperature and relative humidity.</li>
-  <li><b>Raindrops Module & Buzzer Alert:</b> Detects rainfall on the field surface and immediately triggers an onboard <b>piezoelectric buzzer</b> as an audio rain indication alarm.</li>
-  <li><b>Relay Module & Water Pump:</b> Controls the high-voltage irrigation pump based on automated sensor threshold triggers.</li>
-</ul>
-
-<h4 class="modal-section-title">Achievement & Expo Award</h4>
-<ul class="modal-bullet-list">
-  <li><b>Expo Winner:</b> 🏆 Won 1st place in the College Project Expo for demonstrating live automated irrigation and rain alarm buzzer triggers.</li>
+  <li><b>Backend & Framework:</b> Python, Flask web server, Jinja2 templates, SQLite.</li>
+  <li><b>Analytics & ML:</b> Scikit-learn, Pandas, Chart.js for visualization dashboards.</li>
 </ul>`
   }
 ];
