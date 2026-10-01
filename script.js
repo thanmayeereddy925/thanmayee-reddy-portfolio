@@ -425,11 +425,35 @@ document.addEventListener("DOMContentLoaded", () => {
   initActiveTabObserver();
   initContactForm();
   initProjectModal();
+  initCertTableFilters();
 });
 
 // Load saved text from localStorage (purging stale legacy overrides)
 function loadTextOverrides() {
   localStorage.removeItem(KEYS.text);
+}
+
+// Certifications Table Category Filters
+function initCertTableFilters() {
+  const buttons = document.querySelectorAll(".cert-filter-btn");
+  const rows = document.querySelectorAll(".cert-table tbody tr");
+  if (!buttons.length || !rows.length) return;
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const category = btn.dataset.filter;
+
+      rows.forEach(row => {
+        if (category === "all" || row.dataset.category === category) {
+          row.classList.remove("hidden-row");
+        } else {
+          row.classList.add("hidden-row");
+        }
+      });
+    });
+  });
 }
 
 // Load saved profile photo

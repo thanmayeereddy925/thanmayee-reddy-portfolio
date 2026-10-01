@@ -1015,48 +1015,156 @@ body.edit-mode .project-upload-overlay {
   color: var(--text-muted);
 }
 
-/* Certifications Column */
-.cert-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.cert-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* =========================================================
+   CERTIFICATIONS TABULAR COMPONENT
+   ========================================================= */
+.cert-table-container {
   background: var(--bg-panel);
   border: 1px solid var(--line);
-  padding: 16px 22px;
-  border-radius: var(--radius-md);
-  gap: 20px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  margin-top: 14px;
+}
+
+.cert-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cert-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.cert-filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-panel-alt);
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
   transition: var(--transition);
 }
 
-.cert-item:hover {
-  border-color: rgba(255, 58, 84, 0.35);
-  background: var(--bg-panel-alt);
-  transform: translateX(4px);
+.cert-filter-btn:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 58, 84, 0.4);
 }
 
-.cert-info {
-  display: flex;
-  flex-direction: column;
+.cert-filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(255, 58, 84, 0.35);
 }
 
-.cert-name {
+.cert-table-scroll {
+  max-height: 480px;
+  overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+.cert-table-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.cert-table-scroll::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 4px;
+}
+
+.cert-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.cert-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #14141c;
+}
+
+.cert-table th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line-strong);
+  white-space: nowrap;
+}
+
+.cert-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: var(--transition);
+}
+
+.cert-table tbody tr:hover {
+  background: rgba(255, 58, 84, 0.04);
+}
+
+.cert-table tbody tr.hidden-row {
+  display: none !important;
+}
+
+.cert-table td {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+.cert-name-cell {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.98rem;
   color: var(--text-primary);
+  font-size: 0.88rem;
+  line-height: 1.35;
+  min-width: 180px;
 }
 
-.cert-details {
-  font-size: 0.78rem;
+.cert-name-sub {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.cert-issuer-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--text-secondary);
-  margin-top: 3px;
-  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.cert-domain-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  color: var(--text-secondary);
+  white-space: nowrap;
 }
 
 .cert-status {
@@ -1081,35 +1189,16 @@ body.edit-mode .project-upload-overlay {
   border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
-.cert-summary-box {
-  margin-top: 18px;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed var(--line-strong);
-  border-radius: var(--radius-md);
-  transition: var(--transition);
-}
-
-.cert-summary-box:hover {
-  border-color: rgba(255, 58, 84, 0.3);
-}
-
-.cert-summary-title {
+.cert-count-pill {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 700;
   color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.cert-summary-text {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
+  background: rgba(255, 58, 84, 0.1);
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 58, 84, 0.25);
+  margin-left: 10px;
+  vertical-align: middle;
 }
 
 /* Achievement Widget */
