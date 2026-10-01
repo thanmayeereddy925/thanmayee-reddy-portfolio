@@ -427,15 +427,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectModal();
 });
 
-// Load saved text from localStorage
+// Load saved text from localStorage (purging stale legacy overrides)
 function loadTextOverrides() {
-  const overrides = JSON.parse(localStorage.getItem(KEYS.text)) || {};
-  document.querySelectorAll("[data-editable-id]").forEach(el => {
-    const id = el.dataset.editableId;
-    if (overrides[id] !== undefined) {
-      el.innerHTML = overrides[id];
-    }
-  });
+  localStorage.removeItem(KEYS.text);
 }
 
 // Load saved profile photo
