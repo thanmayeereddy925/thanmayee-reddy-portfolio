@@ -6,11 +6,19 @@ const PROJECTS = [
     id: "plant-health-ai",
     title: "AI Plant Health & Disease Detection",
     desc: "A computer vision and agentic diagnostic system classifying plant leaf diseases with deep CNNs and Zero-Shot Learning to deliver automated agronomy treatment plans.",
-    tags: ["Computer Vision", "Deep Learning", "Agentic AI", "Agriculture", "FastAPI"],
+    tags: ["Patent Filed (Team Lead)", "Computer Vision", "Deep Learning", "Agentic AI", "Agriculture", "FastAPI"],
     icon: "🌱",
     github: null,
     images: [],
-    longDesc: `<p>The AI Plant Health Platform is an intelligent diagnostic system bridging high-throughput computer vision classification with an agentic reasoning engine to detect leaf diseases early and deliver actionable agronomy guidance to farmers.</p>
+    longDesc: `<div style="background: rgba(255, 58, 84, 0.08); border: 1px solid rgba(255, 58, 84, 0.3); border-radius: 8px; padding: 14px 18px; margin-bottom: 22px;">
+  <div style="font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;">📜 Official Indian Patent Filed — Team Lead</div>
+  <div style="font-size: 0.88rem; color: var(--text-primary); line-height: 1.5;">
+    <b>Title:</b> UNCERTAINTY-AWARE MULTIMODAL CROP HEALTH DETECTION, FORECASTING AND ADAPTIVE MANAGEMENT SYSTEM<br>
+    <b>App No:</b> 202641109078 &bull; <b>Authority:</b> Intellectual Property India (IP India) &bull; <b>Filing Date:</b> Sept 11, 2026 &bull; <b>Role:</b> Team Lead
+  </div>
+</div>
+
+<p>The AI Plant Health Platform is an intelligent diagnostic system bridging high-throughput computer vision classification with an agentic reasoning engine to detect leaf diseases early and deliver actionable agronomy guidance to farmers.</p>
 
 <h4 class="modal-section-title">Problem Statement</h4>
 <p>Delayed identification of crop foliar infections leads to massive agricultural losses and over-reliance on chemical pesticides. Smallholder farmers lack rapid access to plant pathology experts when outbreaks first appear.</p>
@@ -44,6 +52,7 @@ const PROJECTS = [
 
 <h4 class="modal-section-title">My Key Contribution</h4>
 <ul class="modal-bullet-list">
+  <li><b>Research & Patent Leadership:</b> Served as <b>Team Lead</b> for filing the official Indian patent (App No: 202641109078) with Intellectual Property India for this uncertainty-aware multimodal crop health architecture.</li>
   <li><b>Image Pipeline:</b> Engineered leaf segmentation and background clutter removal to reduce false positives from field soil and weeds.</li>
   <li><b>Zero-Shot Module:</b> Incorporated semantic embeddings to detect emerging disease variants without model retraining.</li>
   <li><b>API Service:</b> Designed a high-throughput FastAPI microservice serving sub-second inference for mobile clients.</li>

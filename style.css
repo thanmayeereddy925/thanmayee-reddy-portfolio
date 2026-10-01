@@ -2183,7 +2183,7 @@ body.edit-mode .edit-menu {
   box-shadow: 0 6px 20px rgba(255, 58, 84, 0.4);
 }
 
-/* Research Card */
+/* Research & Patent Card */
 .research-card {
   background: var(--bg-panel-alt);
   border: 1px solid var(--line);
@@ -2191,6 +2191,74 @@ body.edit-mode .edit-menu {
   border-radius: var(--radius-md);
   padding: 24px;
   margin-top: 24px;
+}
+
+.patent-card {
+  background: linear-gradient(145deg, rgba(20, 20, 26, 0.95), rgba(28, 18, 22, 0.95));
+  border: 1px solid rgba(255, 58, 84, 0.3);
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.patent-header-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.patent-badge-icon {
+  font-size: 1.2rem;
+}
+
+.patent-status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: rgba(255, 58, 84, 0.12);
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 58, 84, 0.3);
+}
+
+.patent-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin: 14px 0;
+  padding: 14px 16px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+}
+
+.patent-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.patent-detail-item .p-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.patent-detail-item .p-val {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.patent-detail-item .p-val.highlight {
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .research-title {
@@ -2214,5 +2282,11 @@ body.edit-mode .edit-menu {
   font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .patent-details-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
