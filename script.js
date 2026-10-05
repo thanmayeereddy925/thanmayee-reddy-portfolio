@@ -459,10 +459,7 @@ function initCertTableFilters() {
 // Load saved profile photo
 function loadProfileImage() {
   localStorage.removeItem("tr_portfolio_profile_image_v1");
-  const savedProfile = localStorage.getItem(KEYS.profileImage);
-  if (savedProfile) {
-    document.getElementById("profileImg").src = savedProfile;
-  }
+  localStorage.removeItem("tr_portfolio_profile_image_v2");
 }
 
 // Save text modifications
