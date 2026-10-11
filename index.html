@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@500;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body>
 
@@ -105,13 +105,17 @@
 
           <!-- Status badge line -->
           <div class="hero-status-sub">
-            <span>🎓 Undergraduate</span>
-            <span class="sep">•</span>
-            <span>💻 AI/ML Developer</span>
-            <span class="sep">•</span>
-            <span>🤖 AI Systems</span>
-            <span class="sep">•</span>
-            <span>🧠 GenAI</span>
+            <div class="status-sub-row">
+              <span>🎓 Undergraduate</span>
+              <span class="sep">•</span>
+              <span>💻 AI/ML Developer</span>
+            </div>
+            <span class="sep desktop-only-sep">•</span>
+            <div class="status-sub-row">
+              <span>🤖 AI Systems</span>
+              <span class="sep">•</span>
+              <span>🧠 GenAI</span>
+            </div>
           </div>
 
           <p class="hero-description" data-editable-id="hero-sub">
@@ -829,7 +833,8 @@
               <span class="cert-count-pill">Domain &amp; Project Specializations</span>
             </h3>
 
-            <div class="cert-table-container">
+            <div class="mobile-table-hint">Swipe table horizontally to view full details &rarr;</div>
+          <div class="cert-table-container">
               <div class="cert-filter-bar">
                 <button type="button" class="cert-filter-btn active" data-filter="all">All (13)</button>
                 <button type="button" class="cert-filter-btn" data-filter="genai">GenAI &amp; RAG (4)</button>
@@ -1033,7 +1038,7 @@
         <a href="Resume.pdf" target="_blank" rel="noopener">Resume</a>
       </div>
     </div>
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
 
