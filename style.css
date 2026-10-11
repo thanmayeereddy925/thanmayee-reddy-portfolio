@@ -2801,20 +2801,23 @@ img {
   .hero-image-container {
     order: -1 !important;
     width: 100% !important;
-    max-width: 260px !important;
-    margin: 0 auto 10px !important;
+    max-width: 220px !important;
+    margin: 0 auto 28px !important;
   }
 
   .profile-image-frame {
-    width: 220px !important;
-    height: 220px !important;
+    width: 180px !important;
+    height: 240px !important;
+    aspect-ratio: 3/4 !important;
     margin: 0 auto !important;
+    border-radius: 22px !important;
   }
 
   .profile-img {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
+    object-position: center 25% !important;
   }
 
   .hero-details {
@@ -2997,52 +3000,27 @@ img {
     align-items: center !important;
     gap: 20px !important;
     width: 100% !important;
-    max-width: 100% !important;
-    text-align: center !important;
-  }
-
-  .hero-image-container {
-    order: -1 !important;
-    width: 100% !important;
-    max-width: 220px !important;
-    margin: 0 auto 5px !important;
-  }
-
-  .profile-image-frame {
-    width: 170px !important;
-    height: 170px !important;
-    margin: 0 auto !important;
-    border-radius: 24px !important;
-  }
-
-  .availability-badge {
-    font-size: 0.7rem !important;
-    padding: 5px 12px !important;
-    margin-top: -12px !important;
-  }
-
   .hero-details {
-    width: 100% !important;
-    max-width: 100% !important;
-    align-items: center !important;
-    text-align: center !important;
+    display: contents !important;
   }
 
   .status-tag {
+    order: 1 !important;
     font-size: 0.68rem !important;
-    padding: 4px 12px !important;
-    margin: 0 auto 16px !important;
+    padding: 5px 14px !important;
+    margin: 0 auto 14px !important;
   }
 
   .hero-title {
+    order: 2 !important;
     font-size: clamp(2rem, 7.5vw, 2.5rem) !important;
     line-height: 1.15 !important;
     margin-bottom: 14px !important;
     word-break: break-word !important;
   }
 
-  /* Two-row balanced status badge for mobile */
   .hero-status-sub {
+    order: 3 !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -3050,9 +3028,17 @@ img {
     border-radius: 12px !important;
     padding: 8px 14px !important;
     font-size: 0.72rem !important;
-    margin: 0 auto 20px !important;
+    margin: 0 auto 24px !important;
     width: fit-content !important;
     max-width: calc(100vw - 32px) !important;
+  }
+
+  .hero-image-container {
+    order: 4 !important;
+    width: 100% !important;
+    max-width: 220px !important;
+    margin: 0 auto 30px !important;
+    position: relative !important;
   }
 
   .status-sub-row {
@@ -3068,6 +3054,7 @@ img {
   }
 
   .hero-description {
+    order: 5 !important;
     font-size: 0.92rem !important;
     line-height: 1.6 !important;
     margin-bottom: 24px !important;
@@ -3076,6 +3063,7 @@ img {
   }
 
   .hero-buttons {
+    order: 6 !important;
     width: 100% !important;
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -3085,17 +3073,15 @@ img {
 
   .hero-buttons .btn {
     width: 100% !important;
-    padding: 10px 12px !important;
-    font-size: 0.84rem !important;
+    padding: 11px 10px !important;
+    font-size: 0.82rem !important;
     justify-content: center !important;
-  }
-
-  .hero-buttons .btn:first-child {
-    grid-column: 1 / -1 !important;
+    white-space: nowrap !important;
   }
 
   /* 3-column compact metrics bar on mobile */
   .hero-metrics {
+    order: 7 !important;
     width: 100% !important;
     max-width: 100% !important;
     display: grid !important;
