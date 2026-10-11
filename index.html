@@ -44,8 +44,42 @@
         <a href="#contact" class="nav-tab">Contact</a>
       </nav>
       <a href="#contact" class="nav-cta">Let's Talk</a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer / Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <div class="mobile-nav-header">
+        <a href="#hero" class="mobile-nav-logo">TR<span class="dot">.</span></a>
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#hero" class="mobile-nav-link"><span class="nav-num">01</span> Home</a>
+        <a href="#about" class="mobile-nav-link"><span class="nav-num">02</span> About</a>
+        <a href="#building" class="mobile-nav-link"><span class="nav-num">03</span> Building</a>
+        <a href="#work" class="mobile-nav-link"><span class="nav-num">04</span> Projects</a>
+        <a href="#services" class="mobile-nav-link"><span class="nav-num">05</span> What I Build</a>
+        <a href="#process" class="mobile-nav-link"><span class="nav-num">06</span> Process</a>
+        <a href="#experience" class="mobile-nav-link"><span class="nav-num">07</span> Experience</a>
+        <a href="#contact" class="mobile-nav-link"><span class="nav-num">08</span> Contact</a>
+      </nav>
+      <div class="mobile-nav-footer">
+        <a href="#contact" class="btn btn-primary mobile-cta">Let's Talk &rarr;</a>
+        <div class="mobile-socials">
+          <a href="https://github.com/thanmayeereddy925" target="_blank" rel="noopener">GitHub</a>
+          <span class="social-sep">&bull;</span>
+          <a href="https://www.linkedin.com/in/gadithanmayee" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Container -->
   <main>
@@ -73,7 +107,7 @@
           <div class="hero-status-sub">
             <span>🎓 3rd-Year B.Tech Student (3.1)</span>
             <span class="sep">•</span>
-            <span>💻 AI/ML Developer</span>
+            <span>💼 AI/ML Engineer @ SsustiVision AI</span>
             <span class="sep">•</span>
             <span>🤖 AI Systems</span>
             <span class="sep">•</span>
@@ -137,12 +171,12 @@
         <div class="about-grid">
           <div class="about-intro">
             <h3 class="about-lead" data-editable-id="about-lead">
-              A 3rd-Year B.Tech student exploring <span class="text-accent">Artificial Intelligence, Machine Learning, Generative AI and Computer Vision</span>.
+              A 3rd-Year B.Tech student &amp; AI/ML Engineer exploring <span class="text-accent">Artificial Intelligence, Machine Learning, Generative AI and Computer Vision</span>.
             </h3>
             <div class="about-text" data-editable-id="about-body">
-              <p>I am Gadi Thanmayee Reddy, currently in my 3rd year (3.1) of B.Tech in Computer Science Engineering (AI &amp; ML) at Marri Laxman Reddy Institute of Technology and Management (MLRITM), Hyderabad.</p>
+              <p>I am Gadi Thanmayee Reddy, currently in my 3rd year (3.1) of B.Tech in Computer Science Engineering (AI &amp; ML) at Marri Laxman Reddy Institute of Technology and Management (MLRITM), Hyderabad, and working as an <strong>AI/ML Engineer at SsustiVision AI</strong>.</p>
               <p>I build intelligent software that bridges trained models with production-ready execution. My work spans deep Computer Vision, Generative AI, Agentic Workflows, and Embedded Robotics/Automation.</p>
-              <p>As Team Lead, I filed an official patent with the Indian Patent Office (App No: 202641109078) for an <em>Uncertainty-Aware Multimodal Crop Health Detection, Forecasting and Adaptive Management System</em>. I also serve as Secretary of the Robotics &amp; Automation Lab (RAL Club), driving hands-on technical initiatives alongside industry roles at QuGates Technologies and Oorjith.</p>
+              <p>As Team Lead, I filed an official patent with the Indian Patent Office (App No: 202641109078) for an <em>Uncertainty-Aware Multimodal Crop Health Detection, Forecasting and Adaptive Management System</em>. I also serve as Secretary of the Robotics &amp; Automation Lab (RAL Club), driving hands-on technical initiatives alongside my role as AI/ML Engineer at SsustiVision AI, completed internship at Qugate Technologies, and industry work at Oorjith.</p>
             </div>
           </div>
 
@@ -617,28 +651,62 @@
           <div class="resume-col">
             <h3 class="resume-col-title">Experience &amp; Leadership</h3>
             <div class="timeline">
+              <!-- 1. SsustiVision AI (Current Role) -->
               <div class="timeline-item">
                 <div class="timeline-meta">
-                  <span class="timeline-period">June 2026 – Present</span>
-                  <span class="timeline-org">QuGates Technologies</span>
-                  <span class="timeline-loc">Bengaluru, Karnataka (Offline)</span>
+                  <span class="timeline-period">Present</span>
+                  <span class="timeline-org">SsustiVision AI</span>
+                  <span class="timeline-loc">Remote / Hybrid</span>
+                  <span class="timeline-badge timeline-badge-current">
+                    <span class="badge-dot"></span>Current
+                  </span>
                 </div>
                 <div class="timeline-content">
-                  <h4 class="timeline-role">AI/ML Intern</h4>
+                  <h4 class="timeline-role">AI/ML Engineer</h4>
+                  <p class="timeline-desc" style="margin-bottom: 12px;">
+                    Started a new professional chapter as an AI/ML Engineer at SsustiVision AI. Having been associated with SsustiVision AI for some time, contributing through practical implementation, exploring new ideas, and working towards meaningful outcomes. Exploring different approaches, translating ideas into implementations, learning through challenges, and contributing to impactful AI/ML solutions.
+                  </p>
                   <ul class="timeline-bullets">
-                    <li>Developing AI and Machine Learning solutions for crop disease detection using computer vision and deep learning techniques.</li>
-                    <li>Building intelligent image classification models to identify plant diseases and improve agricultural decision-making.</li>
-                    <li>Working on software automation solutions to streamline workflows and reduce manual processes.</li>
-                    <li>Performing data preprocessing, model training, testing, and performance evaluation for real-world AI applications.</li>
+                    <li><strong>AI &amp; Machine Learning Solutions:</strong> Drive practical implementation and deployment of Artificial Intelligence and Machine Learning solutions.</li>
+                    <li><strong>Idea Exploration &amp; Architecture:</strong> Explore innovative ideas and develop effective, robust technical architectures and approaches.</li>
+                    <li><strong>Problem-Solving &amp; Experimentation:</strong> Rapid prototyping, hypothesis testing, model refinement, and performance optimization.</li>
+                    <li><strong>Continuous Development:</strong> Expand technical depth, collaborate on impactful initiatives, and continuously advance project outcomes.</li>
                   </ul>
                 </div>
               </div>
 
+              <!-- 2. Qugate Technologies (Completed 3-Month Internship) -->
+              <div class="timeline-item">
+                <div class="timeline-meta">
+                  <span class="timeline-period">June 2026 – Sept 2026</span>
+                  <span class="timeline-org">Qugate Technologies</span>
+                  <span class="timeline-loc">Bengaluru, Karnataka (Offline)</span>
+                  <span class="timeline-badge timeline-badge-completed">Completed</span>
+                </div>
+                <div class="timeline-content">
+                  <h4 class="timeline-role">AI/ML Intern <span class="timeline-duration-tag">3 Months</span></h4>
+                  <p class="timeline-desc" style="margin-bottom: 12px;">
+                    Successfully completed 3-month AI/ML internship at Qugate Technologies, gaining practical experience in AI/ML development, problem-solving, implementation, and presenting technical solutions. Worked on <strong>LEGOPHONICS</strong>, a hydroponics-based indoor farming system, focusing on the AI/ML platform while collaborating with N. Karthik Reddy, who worked on hardware components. Developed deep understanding of planning, refining ideas, considering nuanced details, and presenting solutions effectively.
+                  </p>
+                  <ul class="timeline-bullets">
+                    <li><strong>LEGOPHONICS Platform:</strong> Built the core AI/ML intelligence platform for hydroponics-based indoor farming in close collaboration with hardware engineering.</li>
+                    <li><strong>Computer Vision &amp; Disease Detection:</strong> Developed intelligent image classification models using deep learning to identify plant and crop diseases for informed agricultural decisions.</li>
+                    <li><strong>Software Automation:</strong> Architected software automation pipelines to streamline operational workflows and reduce manual overhead.</li>
+                    <li><strong>Rigorous Evaluation:</strong> Conducted data preprocessing, model training, validation, error debugging, and performance evaluation for real-world reliability.</li>
+                    <li><strong>Key Learnings:</strong> Practical AI/ML implementation, end-to-end debugging, translating ideas into working software, technical communication, and presenting project outcomes.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 3. Oorjith -->
               <div class="timeline-item">
                 <div class="timeline-meta">
                   <span class="timeline-period">July 2026 – Present</span>
                   <span class="timeline-org">Oorjith</span>
                   <span class="timeline-loc">Chandigarh, Punjab (Remote)</span>
+                  <span class="timeline-badge timeline-badge-current">
+                    <span class="badge-dot"></span>Part-Time
+                  </span>
                 </div>
                 <div class="timeline-content">
                   <h4 class="timeline-role">ML Developer (Part-Time)</h4>
@@ -650,11 +718,15 @@
                 </div>
               </div>
 
+              <!-- 4. RAL Club -->
               <div class="timeline-item">
                 <div class="timeline-meta">
                   <span class="timeline-period">2024 – Present</span>
                   <span class="timeline-org">Robotics &amp; Automation Lab (RAL Club)</span>
                   <span class="timeline-loc">MLRITM, Hyderabad</span>
+                  <span class="timeline-badge timeline-badge-current">
+                    <span class="badge-dot"></span>Active
+                  </span>
                 </div>
                 <div class="timeline-content">
                   <h4 class="timeline-role">Secretary</h4>
@@ -972,3 +1044,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+

@@ -419,6 +419,7 @@ const KEYS = {
 // 2. PAGE INITIALIZATION
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
+  initMobileNav();
   loadTextOverrides();
   loadProfileImage();
   renderProjects();
@@ -657,6 +658,7 @@ function closeProjectModal() {
 // ==========================================================================
 function initActiveTabObserver() {
   const tabs = document.querySelectorAll(".nav-tab");
+  const mobileTabs = document.querySelectorAll(".mobile-nav-link");
   const sections = document.querySelectorAll("section");
 
   const options = {
@@ -670,6 +672,13 @@ function initActiveTabObserver() {
       if (entry.isIntersecting) {
         const sectionId = entry.target.id;
         tabs.forEach(tab => {
+          if (tab.getAttribute("href") === `#${sectionId}`) {
+            tab.classList.add("active");
+          } else {
+            tab.classList.remove("active");
+          }
+        });
+        mobileTabs.forEach(tab => {
           if (tab.getAttribute("href") === `#${sectionId}`) {
             tab.classList.add("active");
           } else {
@@ -761,4 +770,48 @@ function showToast(message, isError = false) {
     toast.style.opacity = "0";
     setTimeout(() => toast.remove(), 300);
   }, 3000);
+}
+
+
+
+
+// ==========================================================================
+// MOBILE NAVIGATION DRAWER
+// ==========================================================================
+function initMobileNav() {
+  const toggleBtn = document.getElementById("mobileMenuToggle");
+  const overlay = document.getElementById("mobileNavOverlay");
+  const closeBtn = document.getElementById("mobileNavClose");
+  const backdrop = document.getElementById("mobileNavBackdrop");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+  function openMenu() {
+    overlay?.classList.add("active");
+    overlay?.setAttribute("aria-hidden", "false");
+    toggleBtn?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    overlay?.classList.remove("active");
+    overlay?.setAttribute("aria-hidden", "true");
+    toggleBtn?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  toggleBtn?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+  backdrop?.addEventListener("click", closeMenu);
+
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay?.classList.contains("active")) {
+      closeMenu();
+    }
+  });
 }
