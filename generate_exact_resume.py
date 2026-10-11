@@ -1,29 +1,36 @@
-import os
-import fitz
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, KeepTogether, HRFlowable
+    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, HRFlowable
 )
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+import os
 
-# Register TrueType Calibri from Windows Fonts directory
-pdfmetrics.registerFont(TTFont('Calibri', r'C:\Windows\Fonts\calibri.ttf'))
-pdfmetrics.registerFont(TTFont('Calibri-Bold', r'C:\Windows\Fonts\calibrib.ttf'))
-pdfmetrics.registerFont(TTFont('Calibri-Italic', r'C:\Windows\Fonts\calibrii.ttf'))
-pdfmetrics.registerFont(TTFont('Calibri-Light', r'C:\Windows\Fonts\calibril.ttf'))
+try:
+    pdfmetrics.registerFont(TTFont('Calibri', r'C:\Windows\Fonts\calibri.ttf'))
+    pdfmetrics.registerFont(TTFont('Calibri-Bold', r'C:\Windows\Fonts\calibrib.ttf'))
+    pdfmetrics.registerFont(TTFont('Calibri-Italic', r'C:\Windows\Fonts\calibrii.ttf'))
+    pdfmetrics.registerFont(TTFont('Calibri-Light', r'C:\Windows\Fonts\calibril.ttf'))
+    f_main = 'Calibri'
+    f_bold = 'Calibri-Bold'
+    f_light = 'Calibri-Light'
+    f_italic = 'Calibri-Italic'
+except:
+    f_main = 'Helvetica'
+    f_bold = 'Helvetica-Bold'
+    f_light = 'Helvetica'
+    f_italic = 'Helvetica-Oblique'
 
-def build_exact_resume(filename="Resume.pdf"):
-    # Margins: 60 pt left/right (~0.83 in), 38 pt top/bottom (~0.53 in)
+def generate_resume(output_path="Resume.pdf"):
     doc = SimpleDocTemplate(
-        filename,
+        output_path,
         pagesize=letter,
-        leftMargin=60,
-        rightMargin=60,
-        topMargin=38,
-        bottomMargin=38
+        leftMargin=54,
+        rightMargin=54,
+        topMargin=36,
+        bottomMargin=36
     )
 
     c_black = colors.HexColor("#000000")
@@ -32,328 +39,406 @@ def build_exact_resume(filename="Resume.pdf"):
 
     styles = getSampleStyleSheet()
 
-    # Title: "Gadi Thanmayee" (Calibri-Light 28pt, centered)
     title_style = ParagraphStyle(
-        'ExactTitle',
+        'DocTitle',
         parent=styles['Normal'],
-        fontName='Calibri-Light',
-        fontSize=27,
-        leading=30,
+        fontName=f_light,
+        fontSize=26,
+        leading=28,
         textColor=c_black,
         alignment=1
     )
 
     contact_style = ParagraphStyle(
-        'ExactContact',
+        'DocContact',
         parent=styles['Normal'],
-        fontName='Calibri',
-        fontSize=10.5,
+        fontName=f_main,
+        fontSize=10,
         leading=14,
         textColor=c_black
     )
 
     heading_style = ParagraphStyle(
-        'ExactHeading',
+        'DocHeading',
         parent=styles['Normal'],
-        fontName='Calibri-Bold',
+        fontName=f_bold,
         fontSize=11,
         leading=13,
         textColor=c_black
     )
 
     body_style = ParagraphStyle(
-        'ExactBody',
+        'DocBody',
         parent=styles['Normal'],
-        fontName='Calibri',
-        fontSize=10,
+        fontName=f_main,
+        fontSize=9.8,
         leading=13,
         textColor=c_black
     )
 
-    proj_style = ParagraphStyle(
-        'ExactProj',
-        parent=styles['Normal'],
-        fontName='Calibri',
-        fontSize=9.8,
-        leading=12.5,
-        textColor=c_black
-    )
-
     bullet_style = ParagraphStyle(
-        'ExactBullet',
+        'DocBullet',
         parent=styles['Normal'],
-        fontName='Calibri',
-        fontSize=9.8,
+        fontName=f_main,
+        fontSize=9.5,
         leading=12.5,
         textColor=c_black,
-        leftIndent=16,
+        leftIndent=14,
         firstLineIndent=-10,
-        spaceAfter=1
+        spaceAfter=2
     )
 
     sub_bullet_style = ParagraphStyle(
-        'ExactSubBullet',
+        'DocSubBullet',
         parent=styles['Normal'],
-        fontName='Calibri',
+        fontName=f_main,
         fontSize=9.3,
-        leading=11.8,
+        leading=12,
         textColor=c_black,
-        leftIndent=16,
+        leftIndent=14,
         spaceAfter=1.5
+    )
+
+    role_title_style = ParagraphStyle(
+        'DocRoleTitle',
+        parent=styles['Normal'],
+        fontName=f_bold,
+        fontSize=10.5,
+        leading=13,
+        textColor=c_black,
+        spaceBefore=4,
+        spaceAfter=1
+    )
+
+    role_meta_style = ParagraphStyle(
+        'DocRoleMeta',
+        parent=styles['Normal'],
+        fontName=f_italic,
+        fontSize=9.5,
+        leading=12,
+        textColor=colors.HexColor("#333333"),
+        spaceAfter=3
     )
 
     def section(title):
         p = Paragraph(title, heading_style)
-        line = HRFlowable(width="100%", thickness=0.75, color=c_line, spaceBefore=2, spaceAfter=5)
+        line = HRFlowable(width="100%", thickness=0.75, color=c_line, spaceBefore=2, spaceAfter=4)
         return [p, line]
 
     story = []
 
-    # =========================================================================
-    # PAGE 1: Header, Contact, Objective, Education, Projects (Part 1 - 6 items)
-    # =========================================================================
+    # ==========================================
+    # PAGE 1: Header, Contact, Objective, Education, Skills
+    # ==========================================
     story.append(Paragraph("Gadi Thanmayee", title_style))
-    story.append(Spacer(1, 5))
+    story.append(Spacer(1, 6))
 
-    contact_left = (
-        'Hyderabad , Telangana<br/>'
-        'Phone : 8332930925<br/>'
-        'Email : <font color="#1f4e79"><u><a href="mailto:thanmayeereddy925@gmail.com">thanmayeereddy925@gmail.com</a></u></font>'
+    c_left = (
+        'Hyderabad, Telangana<br/>'
+        'Phone: 8332930925<br/>'
+        'Email: <font color="#1f4e79"><u><a href="mailto:thanmayeereddy925@gmail.com">thanmayeereddy925@gmail.com</a></u></font>'
     )
-    contact_right = (
-        'Linkedin : <font color="#1f4e79"><u><a href="http://www.linkedin.com/in/gadithanmayee">http://www.linkedin.com/in/gadithanmayee</a></u></font><br/>'
-        'Github : <font color="#1f4e79"><u><a href="https://github.com/thanmayeereddy925">https://github.com/thanmayeereddy925</a></u></font><br/>'
-        '<font color="#1f4e79"><u><a href="https://thanmayee-reddy-portfolio.vercel.app">Portfolio</a></u></font>'
+    c_right = (
+        'LinkedIn: <font color="#1f4e79"><u><a href="http://www.linkedin.com/in/gadithanmayee">http://www.linkedin.com/in/gadithanmayee</a></u></font><br/>'
+        'GitHub: <font color="#1f4e79"><u><a href="https://github.com/thanmayeereddy925">https://github.com/thanmayeereddy925</a></u></font><br/>'
+        'Portfolio: <font color="#1f4e79"><u><a href="https://thanmayee-reddy-portfolio.vercel.app">https://thanmayee-reddy-portfolio</a></u></font>'
     )
-
-    t_contact = Table(
-        [[Paragraph(contact_left, contact_style), Paragraph(contact_right, contact_style)]],
-        colWidths=[246, 246]
-    )
-    t_contact.setStyle(TableStyle([
+    t_c = Table([[Paragraph(c_left, contact_style), Paragraph(c_right, contact_style)]], colWidths=[250, 254])
+    t_c.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
         ('LEFTPADDING', (0,0), (-1,-1), 0),
         ('RIGHTPADDING', (0,0), (-1,-1), 0),
         ('TOPPADDING', (0,0), (-1,-1), 0),
         ('BOTTOMPADDING', (0,0), (-1,-1), 0),
     ]))
-    story.append(t_contact)
+    story.append(t_c)
     story.append(Spacer(1, 8))
 
-    # Objective
-    story.extend(section("Objective :"))
-    obj_text = (
-        "Curious and motivated 3rd-year engineering student with a strong focus on Machine Learning, "
-        "Generative AI, Computer Vision, and IoT microcontrollers. Passionate about learning new technologies and applying them to "
-        "real-world projects. Eager to gain hands-on experience through internships, contribute to meaningful "
-        "projects, and develop practical skills while exploring innovative solutions."
+    story.extend(section("Objective:"))
+    obj_p = (
+        "Motivated AI/ML Developer and Undergraduate engineering student in Computer Science &amp; Engineering "
+        "(AI &amp; ML) at MLRITM, Hyderabad. Secretary of the Robotics &amp; Automation Lab (RAL Club). Hands-on "
+        "experience across Computer Vision, Deep Learning, Generative AI, RAG pipelines, and intelligent workflow "
+        "automation. Currently working as an AI/ML Engineer at SustiVision AI, completed a three-month AI/ML "
+        "internship at Qugate Technologies, and serving as ML Developer (Part-Time) at Oorjith. Passionate about "
+        "turning trained machine learning models into robust, production-ready software systems and real-world architectures."
     )
-    story.append(Paragraph(obj_text, body_style))
+    story.append(Paragraph(obj_p, body_style))
     story.append(Spacer(1, 8))
 
-    # Education
-    story.extend(section("Education :"))
-    edu_1 = (
-        "Marri Laxman Reddy Institute of Technology and Management [MLRITM] , Btech - Computer "
-        "Science and Engineering [AIML]"
-    )
-    edu_1_date = "Sept 2024 &ndash; Jun 2028"
-    edu_2 = "Intermediate , Narayana Junior College , Kukatpally"
-    edu_2_date = "July 2024"
-
-    t_edu = Table([
-        [Paragraph(f"&bull;&nbsp; {edu_1}", body_style), Paragraph(edu_1_date, ParagraphStyle('RDate1', parent=body_style, alignment=2))],
-        [Paragraph(f"&bull;&nbsp; {edu_2}", body_style), Paragraph(edu_2_date, ParagraphStyle('RDate2', parent=body_style, alignment=2))]
-    ], colWidths=[372, 120])
+    story.extend(section("Education:"))
+    edu_table_data = [
+        [
+            Paragraph("<b>Marri Laxman Reddy Institute of Technology and Management [MLRITM]</b>,<br/>Btech - Computer Science and Engineering [AIML]", body_style),
+            Paragraph("<b>Sept 2024 – Jun 2028</b>", ParagraphStyle('RAlign', parent=body_style, alignment=2))
+        ],
+        [
+            Paragraph("Intermediate, Narayana Junior College, Kukatpally", body_style),
+            Paragraph("<b>July 2024</b>", ParagraphStyle('RAlign', parent=body_style, alignment=2))
+        ]
+    ]
+    t_edu = Table(edu_table_data, colWidths=[370, 134])
     t_edu.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
         ('LEFTPADDING', (0,0), (-1,-1), 0),
         ('RIGHTPADDING', (0,0), (-1,-1), 0),
-        ('TOPPADDING', (0,0), (-1,-1), 1),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 1),
+        ('TOPPADDING', (0,0), (-1,-1), 2),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
     ]))
     story.append(t_edu)
     story.append(Spacer(1, 8))
 
-    # Projects Header (Page 1 has 6 projects)
-    story.extend(section("Projects :"))
-
-    p1_projects = [
-        ("Plant Health AI Platform :", "Developed a multimodal leaf disease diagnostic platform using transfer learning (CNNs) to classify crop pathologies, providing calibrated confidence scores, disease treatment guidance, and a web dashboard for agricultural decision support."),
-        ("Ultron Autonomous Desktop Assistant :", "Developed an autonomous desktop agent translating voice and natural-language commands into precise operating system actions, application navigation, active system telemetry (CPU/RAM), and workflow automation using Python and PyAutoGUI."),
-        ("IntelliDoc RAG Engine :", "Built an enterprise Retrieval-Augmented Generation application integrating MongoDB Vector Search and Sentence Transformers to index technical manuals, hardware datasheets, and answer complex domain queries with zero hallucinations."),
-        ("IoT-Based Smart Agricultural System :", "Built a basic smart agriculture system using sensors to monitor environmental conditions and support simple irrigation decisions using IoT concepts."),
-        ("Spam Email Detection Using Machine Learning :", "Created a basic supervised machine learning model to classify emails as spam or non-spam, involving data preprocessing, feature extraction, and model evaluation using customized 13 features and connected to an email for real time detection."),
-        ("IoT Chatbot :", "Built a RAG-based chatbot for IoT sensors and microcontrollers that retrieves relevant information from technical documents, integrates Wikipedia API for additional knowledge, generates context-aware responses using an LLM, and showcases results through a Flask Interface.")
+    story.extend(section("Skills :"))
+    skills_lines = [
+        "<b>Programming:</b> Python, C, C++, Java",
+        "<b>Machine Learning:</b> Scikit-learn, Pandas, NumPy, Model Evaluation, Feature Engineering, Supervised Learning",
+        "<b>Deep Learning:</b> PyTorch, TensorFlow, Keras, CNNs, Transfer Learning, Neural Networks",
+        "<b>Computer Vision:</b> OpenCV, YOLOv8, Object Detection, Image Classification, Foliar Diagnostics",
+        "<b>Generative AI &amp; Agentic AI:</b> LLMs, RAG Pipelines, Prompt Engineering, AI Agents, Tool Calling, NLP, Vector Embeddings",
+        "<b>Frameworks &amp; APIs:</b> FastAPI, Flask, Streamlit, Google Gemini API, REST APIs",
+        "<b>Tools &amp; Platforms:</b> Git &amp; GitHub, VS Code, Antigravity, Linux, PyAutoGUI",
+        "<b>Databases:</b> SQL, SQLite, Vector Databases (MongoDB Vector Search)",
+        "<b>Professional &amp; Interpersonal:</b> Problem-solving, Implementation Planning, Technical Presentation, Team Collaboration"
     ]
+    for sk in skills_lines:
+        story.append(Paragraph(sk, body_style))
+        story.append(Spacer(1, 2))
 
-    for title, desc in p1_projects:
-        story.append(Paragraph(f"<b>{title}</b> {desc}", proj_style))
-        story.append(Spacer(1, 3.5))
-
-    # Clean PageBreak to Page 2
     story.append(PageBreak())
 
-    # =========================================================================
-    # PAGE 2: Projects (Part 2 - 4 items), Skills, Experience (QuGates & Oorjith)
-    # =========================================================================
-    p2_projects = [
-        ("Accident Detection using Deep Learning :", "Developed an AI-based system to detect road accidents from images using deep learning. Built and trained the model using Python, TensorFlow/Keras, NumPy, and Pandas, and deployed it through a Flask-based web application for accident detection."),
-        ("Deepfake Detection using Deep Learning :", "Developed a deep learning model to identify AI-generated or manipulated media (deepfakes). Implemented the detection system using Python, TensorFlow/PyTorch, and OpenCV to classify media as real or fake."),
-        ("YTBT Cardio NLP :", "Developed YTBT Cardio NLP, a PyTorch 2D CNN + Transformer system translating 12-lead ECG waveform images into structured reports. Built a multi-role Flask portal (Doctor/Patient/Technician/Admin) with SQLite audit logs."),
-        ("StudyMind AI :", "Developed StudyMind AI, an adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API. Implemented a Random Forest ML engine to classify student concept mastery and automatically inject remedial topics, secured by a custom proctored, anti-cheat exam portal and synced peer timers.")
+    # ==========================================
+    # PAGE 2: Experience
+    # ==========================================
+    story.extend(section("Experience:"))
+
+    story.append(Paragraph("<b>AI/ML Engineer (Part-Time)</b>", role_title_style))
+    story.append(Paragraph("SustiVision AI | Nigeria, Africa &bull; <b>Present</b>", role_meta_style))
+    sv_bullets = [
+        "Serving as an AI/ML Engineer, applying and advancing practical expertise across artificial intelligence, machine learning, and computer vision systems.",
+        "Designing and executing practical implementations of AI/ML architectures, exploring alternative algorithmic approaches and innovative problem-solving methods.",
+        "Contributing actively to project development, model experimentation, and continuous technical improvement with a focus on meaningful real-world outcomes.",
+        "Developing intelligent software solutions across modern AI/ML frameworks, tools, and scalable inference environments.",
+        "Approaching complex engineering challenges from multiple perspectives to construct and refine robust AI-driven applications."
     ]
-
-    for title, desc in p2_projects:
-        story.append(Paragraph(f"<b>{title}</b> {desc}", proj_style))
-        story.append(Spacer(1, 3.5))
-
+    for b in sv_bullets:
+        story.append(Paragraph(f"&bull; {b}", bullet_style))
     story.append(Spacer(1, 6))
 
-    # Skills Section
-    story.extend(section("Skills"))
-
-    skills = [
-        ("Programming:", "Python, C (basics), SQL, JavaScript (Basics)"),
-        ("Core Concepts:", "Basics of Machine Learning, Supervised Learning, Data Preprocessing"),
-        ("IoT & Embedded (Basic):", "Arduino, ESP8266, Sensors, IoT fundamentals"),
-        ("Libraries & Tools:", "Pandas, NumPy, Scikit-learn"),
-        ("Generative AI & RAG:", "RAG Applications, Prompt Engineering, LLM Integration, Vector Search"),
-        ("Deep Learning & Frameworks:", "TensorFlow/Keras, PyTorch, OpenCV"),
-        ("Backend & Cloud:", "Flask, SQLite, MongoDB Atlas Vector Search, AWS Cloud Foundations"),
-        ("Other :", "Enthusiastic, Problem-solving, willingness to learn, basic project implementation, technical leadership")
+    story.append(Paragraph("<b>AI/ML Intern</b>", role_title_style))
+    story.append(Paragraph("Qugate Technologies | Bengaluru, Karnataka &bull; <b>June 2026 – September 2026 (Completed)</b>", role_meta_style))
+    qugate_bullets = [
+        "Completed a three-month AI/ML internship gaining practical experience in AI/ML implementation, debugging, and productionizing models.",
+        "Worked on the AI/ML platform for LEGOPHONICS, a hydroponics-based indoor farming system, collaborating closely with hardware engineers.",
+        "Developed deep learning and computer vision models for crop disease detection and plant health diagnostics to enhance agronomic decision-making.",
+        "Engineered intelligent image classification models and software automation solutions to streamline operational workflows and reduce manual tasks.",
+        "Performed dataset preprocessing, model training, validation, performance benchmarking, and system integration.",
+        "Cultivated hands-on expertise in the end-to-end AI development lifecycle, from data curation to testing and deployment."
     ]
-
-    for label, val in skills:
-        story.append(Paragraph(f"&bull; <b>{label}</b> {val}", bullet_style))
-
+    for b in qugate_bullets:
+        story.append(Paragraph(f"&bull; {b}", bullet_style))
     story.append(Spacer(1, 6))
 
-    # Experience Section (QuGates & Oorjith both fit cleanly on Page 2!)
-    story.extend(section("Experience :"))
-
-    story.append(Paragraph("<b>AI/ML Intern</b>", body_style))
-    exp1_comp = (
-        '<font color="#1f4e79"><u><a href="https://qugates.com">QuGates Technologies</a></u></font> | Bengaluru, Karnataka<br/>'
-        '<b>June 2026 &ndash; Present</b>'
-    )
-    story.append(Paragraph(exp1_comp, body_style))
-    story.append(Spacer(1, 2))
-
-    qugates_points = [
-        "Developing AI and Machine Learning solutions for <b>crop disease detection</b> using computer vision and deep learning techniques.",
-        "Building intelligent image classification models to identify plant diseases and improve agricultural decision-making.",
-        "Working on software automation solutions to streamline workflows and reduce manual processes.",
-        "Performing data preprocessing, model training, testing, and performance evaluation for AI applications.",
-        "Collaborating with the development team to integrate AI models into software solutions."
+    story.append(Paragraph("<b>ML Developer (Part-Time)</b>", role_title_style))
+    story.append(Paragraph("Oorjith | Chandigarh, Punjab (Remote) &bull; <b>July 2026 – Present</b>", role_meta_style))
+    oorjit_bullets = [
+        "Develop and support machine learning solutions by applying data preprocessing, exploratory analysis, and feature engineering techniques.",
+        "Collaborate with cross-functional engineering teams to build, optimize, and evaluate AI-driven applications using Python and machine learning frameworks.",
+        "Assist in analysing datasets, tuning model hyperparameters, and delivering practical AI solutions for production use cases.",
+        "Gain hands-on experience across the entire machine learning workflow, from feature engineering to model deployment and runtime optimization."
     ]
-    for pt in qugates_points:
-        story.append(Paragraph(f"&bull; {pt}", bullet_style))
+    for b in oorjit_bullets:
+        story.append(Paragraph(f"&bull; {b}", bullet_style))
+    story.append(Spacer(1, 6))
 
-    story.append(Spacer(1, 4))
-
-    # Role 2: Oorjith
-    story.append(Paragraph("<b>Part-Time:</b>", body_style))
-    exp2_comp = (
-        '<b><font color="#1f4e79"><u>Oorjith</u></font></b> | Chandigarh , Punjab<br/>'
-        '<b>July 2026 &ndash; Present</b>'
-    )
-    story.append(Paragraph(exp2_comp, body_style))
-    story.append(Spacer(1, 2))
-
-    oorjith_points = [
-        "Develop and support machine learning solutions by applying data preprocessing, model development, and performance evaluation techniques.",
-        "Collaborate with cross-functional teams to build and optimize AI-driven applications using Python and machine learning frameworks.",
-        "Assist in analyzing datasets, improving model performance, and implementing practical AI solutions for real-world use cases."
+    story.append(Paragraph("<b>Secretary — Robotics &amp; Automation Lab (RAL Club)</b>", role_title_style))
+    story.append(Paragraph("MLRITM, Hyderabad &bull; <b>2024 – Present</b>", role_meta_style))
+    ral_bullets = [
+        "Directing club technical initiatives, workshops, innovation competitions, and bootcamps for 200+ engineering students.",
+        "Coordinating student engineering teams for national hackathons, embedded systems prototyping, and autonomous drone demonstrations.",
+        "Leading hands-on peer mentoring sessions in microcontrollers, sensor-actuator interfacing, and integrated software-hardware automation pipelines."
     ]
-    for pt in oorjith_points:
-        story.append(Paragraph(f"&bull; {pt}", bullet_style))
+    for b in ral_bullets:
+        story.append(Paragraph(f"&bull; {b}", bullet_style))
 
-    # Clean PageBreak to Page 3
     story.append(PageBreak())
 
-    # =========================================================================
-    # PAGE 3: Patent, Extra-Curriculars, Courses & Certifications, Achievements
-    # =========================================================================
-    # Patent Section
-    story.extend(section("Patent :"))
-    story.append(Paragraph("<b>Team Lead &mdash; Indian Patent Application No: 202641109078 (IP India)</b>", body_style))
-    story.append(Paragraph("<i>Title: Uncertainty-Aware Multimodal Crop Health Detection, Forecasting and Adaptive Management System</i>", body_style))
-    story.append(Spacer(1, 2))
-    pat_points = [
-        "Spearheaded an engineering team to architect an uncertainty-aware vision pipeline fusing multispectral crop imagery with environmental sensor metrics to detect crop pathology and output calibrated risk forecasting.",
-        "Formulated an adaptive management loop that maps diagnostic outputs to localized remediation strategies with quantifiable confidence intervals."
+    # ==========================================
+    # PAGE 3: Projects (Part 1)
+    # ==========================================
+    story.extend(section("Projects:"))
+
+    projects_p1 = [
+        (
+            "AI Plant Health &amp; Disease Detection (Patent Filed — Team Lead)",
+            [
+                "Developed a computer vision and agentic diagnostic system classifying plant leaf diseases using deep CNNs and Zero-Shot Learning.",
+                "Delivered automated agronomy treatment plans, continuous foliar monitoring, and adaptive agronomic decision support.",
+                "Filed official patent with the Indian Patent Office (Application No: 202641109078) as Team Lead for the core diagnostic architecture.",
+                "Engineered high-throughput inference endpoints using FastAPI microservices and PyTorch deep learning models.",
+                "<b>Tech Stack:</b> Python, FastAPI, PyTorch, Computer Vision, Deep Learning, Agentic AI, Zero-Shot Learning, OpenCV."
+            ]
+        ),
+        (
+            "Ultron — AI Desktop Automation Agent",
+            [
+                "Developed an autonomous desktop AI assistant translating spoken and text instructions into real-time operating system actions.",
+                "Implemented multi-step computer workflow automation, application control, and speech recognition pipelines.",
+                "Engineered voice-controlled agentic loops using Speech AI, PyAutoGUI, tool calling, and structured task execution.",
+                "<b>Tech Stack:</b> Python, Agentic AI, Voice AI, PyAutoGUI, Tool Calling, Speech Recognition, OS Automation."
+            ]
+        ),
+        (
+            "Accident Detection &amp; Road Safety Vision",
+            [
+                "Built an AI-powered computer vision system detecting vehicular road accidents from surveillance video imagery in real time.",
+                "Trained custom CNN and YOLOv8 models for accurate object detection and incident classification under diverse lighting conditions.",
+                "Integrated automated emergency dispatch sending Telegram alerts with precise GPS coordinates to response teams.",
+                "Deployed the detection system as an interactive Flask-based web application with real-time video feed processing.",
+                "<b>Tech Stack:</b> Python, TensorFlow, Keras, YOLOv8, OpenCV, Flask, Telegram API."
+            ]
+        ),
+        (
+            "Smart Irrigation &amp; Rain Alert System (Winner — College Project Expo)",
+            [
+                "Designed and implemented an automated agricultural hardware system monitoring soil moisture, temperature, humidity, and rainfall.",
+                "Programmed Arduino and ESP8266 microcontrollers to control relay pumps and trigger an audio rain buzzer alert.",
+                "Demonstrated the complete sensory pipeline and water conservation impact, winning 1st Place at the College Project Expo.",
+                "<b>Tech Stack:</b> Arduino, ESP8266, IoT Sensors, Relay Modules, Embedded C/C++, Hardware Automation."
+            ]
+        )
     ]
-    for pt in pat_points:
-        story.append(Paragraph(f"&bull; {pt}", bullet_style))
+    for p_title, p_bullets in projects_p1:
+        story.append(Paragraph(f"<b>{p_title}</b>", role_title_style))
+        for pb in p_bullets:
+            story.append(Paragraph(f"&bull; {pb}", bullet_style))
+        story.append(Spacer(1, 4))
 
-    story.append(Spacer(1, 7))
+    story.append(PageBreak())
 
-    # Extra-Curricular Activities & Leadership Section (User Explicit Request)
-    story.extend(section("Extra-Curricular Activities &amp; Leadership :"))
-
-    extra_curriculars = [
-        ("Secretary — Robotics & Automation Lab (RAL Club), MLRITM (2024 – Present):",
-         "Directing club administrative operations, managing budgets, and coordinating inter-departmental innovation projects across robotics, AI, and embedded automation."),
-        ("Lead Event Coordinator — RAL Club Events & Technical Symposia:",
-         "Organized and orchestrated flagship college robotics exhibitions, technical hack days, and project showcases engaging 200+ active student participants across departments."),
-        ("Technical Mentor & Workshop Instructor:",
-         "Conducted hands-on technical workshops instructing junior batches in Arduino microcontrollers, ESP8266 IoT connectivity, and Python for AI, guiding 100+ students through circuit design and sensor telemetry."),
-        ("Hackathon Coordinator & Team Lead — Smart India Hackathon (SIH) & Competitions:",
-         "Led cross-functional teams in competitive national hackathons (including SIH initiatives) focused on AI-driven agricultural solutions and smart automation prototypes, driving architecture design and live demonstrations.")
+    # ==========================================
+    # PAGE 4: Projects (Part 2)
+    # ==========================================
+    projects_p2 = [
+        (
+            "IoT Hardware Chatbot (RAG System)",
+            [
+                "Developed a domain-specific Retrieval-Augmented Generation (RAG) assistant for IoT sensors, boards, and microcontrollers.",
+                "Indexed technical datasheets into vector representations with Wikipedia API fallback for comprehensive knowledge retrieval.",
+                "Leveraged LLMs to synthesize accurate, context-aware technical responses showcased through an interactive Flask web UI.",
+                "<b>Tech Stack:</b> Python, RAG Pipelines, LLMs, Flask, NLP, Vector Databases, Wikipedia API."
+            ]
+        ),
+        (
+            "YTBT Cardio NLP — ECG to Medical Report Translation",
+            [
+                "Built a clinical multimodal deep learning architecture translating 12-lead ECG waveform images into structured medical reports.",
+                "Combined a PyTorch 2D CNN feature extractor with a Transformer language model for sequential diagnostic report generation.",
+                "Engineered a secure multi-role Flask web portal (Doctor, Patient, Technician, Admin) equipped with SQLite audit logs.",
+                "<b>Tech Stack:</b> Python, PyTorch, Transformers, 2D CNN, NLP, Flask, SQLite."
+            ]
+        ),
+        (
+            "StudyMind AI — Adaptive Learning &amp; Mastery Navigator",
+            [
+                "Developed an adaptive personalized study navigator generating tailored learning roadmaps and dynamic study timetables.",
+                "Integrated Google Gemini API for automated curriculum generation and intelligent study guidance.",
+                "Implemented a Random Forest ML engine to diagnose student concept mastery levels and dynamically inject remedial topics.",
+                "Built a secure proctored anti-cheat exam portal with synchronized peer timers using Flask and SQLite.",
+                "<b>Tech Stack:</b> Python, Flask, SQLite, Google Gemini API, Scikit-learn, Random Forest."
+            ]
+        ),
+        (
+            "AI Workforce Productivity &amp; Task Management System",
+            [
+                "Built an intelligent productivity and task tracking platform featuring multi-role dashboards for Managers, Employees, and Admins.",
+                "Integrated machine learning algorithms for work log anomaly detection, identifying irregularities and workflow bottlenecks.",
+                "Implemented project analytics, progress visualization, and performance reporting using Flask and SQLite.",
+                "<b>Tech Stack:</b> Python, Flask, SQLite, Machine Learning, Scikit-learn, Data Analytics."
+            ]
+        ),
+        (
+            "Spam Email Detection Using Machine Learning",
+            [
+                "Developed a supervised machine learning classification pipeline to accurately detect and filter spam emails.",
+                "Conducted comprehensive text preprocessing, TF-IDF vectorization, and engineered 13 custom feature extractions.",
+                "Connected the trained model to a live email account for automated real-time incoming message classification.",
+                "<b>Tech Stack:</b> Python, Scikit-learn, Pandas, NumPy, Feature Engineering, Supervised Learning."
+            ]
+        )
     ]
+    for p_title, p_bullets in projects_p2:
+        story.append(Paragraph(f"<b>{p_title}</b>", role_title_style))
+        for pb in p_bullets:
+            story.append(Paragraph(f"&bull; {pb}", bullet_style))
+        story.append(Spacer(1, 4))
 
-    for title, desc in extra_curriculars:
-        story.append(Paragraph(f"&bull; <b>{title}</b> {desc}", bullet_style))
+    story.append(PageBreak())
 
-    story.append(Spacer(1, 7))
+    # ==========================================
+    # PAGE 5: Patents & Courses/Certifications
+    # ==========================================
+    story.extend(section("Patents &amp; Intellectual Property:"))
+    story.append(Paragraph("<b>UNCERTAINTY-AWARE MULTIMODAL CROP HEALTH DETECTION, FORECASTING AND ADAPTIVE MANAGEMENT SYSTEM</b>", role_title_style))
+    pat_bullets = [
+        "<b>Role:</b> Team Lead",
+        "<b>Application No:</b> 202641109078",
+        "<b>Filing Authority:</b> Indian Patent Office (IP India)",
+        "<b>Filing Date:</b> September 11, 2026",
+        "<b>Docket &amp; CBR:</b> Docket 143606 | CBR 74259",
+        "<b>Institution:</b> Dept. of CSM, MLRITM, Hyderabad",
+        "<b>System Overview:</b> Led the research and engineering team in architecting an uncertainty-aware multimodal diagnostic system. The system integrates high-resolution foliar computer vision with multi-sensor environmental inputs to detect crop diseases under ambiguous field conditions, forecast pathogen progression, and generate adaptive agronomy interventions."
+    ]
+    for b in pat_bullets:
+        story.append(Paragraph(f"&bull; {b}", bullet_style))
+    story.append(Spacer(1, 8))
 
-    # Courses & Certifications Section
     story.extend(section("Courses &amp; Certifications:"))
-
     certs = [
-        ("Prime 2.0: AI/ML Batch — Currently Pursuing",
-         "Topics: Machine Learning, Deep Learning, Generative AI, RAG, AI Projects, PyTorch, and AI Engineering."),
-        ("Python with AI Course — AI for Techies — Currently Pursuing",
-         "Focused on Python programming, AI fundamentals, problem-solving, and AI-based application development."),
-        ("AI Projects Module — Currently Pursuing",
-         "Hands-on AI/ML project development and deployment of real-world applications."),
-        ("Infosys Springboard Certification — GAN for Cardiovascular Disease (CVD)",
-         "Hands-on machine learning model training using Generative Adversarial Networks (GANs) for medical image generation and risk analysis."),
-        ("AWS Academy Graduate — AWS Academy Cloud Foundations",
-         "Completed Amazon Web Services (AWS) training covering cloud architecture, compute, security, storage, and networking services."),
-        ("Generative AI with MongoDB & Vector Search — MongoDB",
-         "Hands-on certification in semantic vector embeddings, vector search indexes, and RAG architectures."),
-        ("AWS Educate — Machine Learning Foundations & Generative AI",
-         "Amazon Web Services (AWS) training covering machine learning pipelines, deep learning fundamentals, and GenAI concepts."),
-        ("Infosys Springboard — Robotic Process Automation (RPA) & Computer Vision 101",
-         "Automation workflows, bot configuration, and image processing fundamentals with OpenCV.")
+        "Building RAG Apps Using MongoDB — MongoDB | Retrieval-Augmented Generation &amp; Vector Search — <b>Completed</b>",
+        "Building AI-Powered Search with MongoDB — MongoDB | Vector Indexes &amp; Semantic Querying — <b>Completed</b>",
+        "Vector Search Fundamentals — MongoDB | High-Dimensional Embeddings &amp; Similarity Search — <b>Completed</b>",
+        "AWS Educate — Introduction to Generative AI — AWS Educate | Foundation Models, LLMs &amp; Prompt Engineering — <b>Completed</b>",
+        "Computer Vision 101 — Applied AI | CNNs, Image Filters &amp; Object Detection — <b>Completed</b>",
+        "GAN for Cardiovascular Disease (CVD) — Infosys Springboard | Medical Deep Learning — <b>Completed</b>",
+        "Introduction to Deep Learning — Deep Learning Track | Neural Network Architectures &amp; Backpropagation — <b>Completed</b>",
+        "Introduction to NLP (Natural Language Processing) — Applied AI | Tokenization, Embeddings &amp; Transformers — <b>Completed</b>",
+        "AWS Educate — Machine Learning Foundations — AWS Educate | Feature Pipelines &amp; Model Evaluation — <b>Completed</b>",
+        "AWS Academy Graduate — Cloud Foundations — AWS Academy | Cloud Architecture, Model Serving &amp; Infrastructure — <b>Completed</b>",
+        "Programming in Python with AI — Technical Education | Object-Oriented Design &amp; Microservices — <b>Completed</b>",
+        "Introduction to Robotic Process Automation — Automation Track | Software Bots &amp; Workflow Automation — <b>Completed</b>",
+        "Prime 2.0: AI/ML Batch — Advanced Training | ML, Deep Learning, GenAI, RAG Systems, PyTorch — <b>In Progress</b>"
     ]
+    for c in certs:
+        story.append(Paragraph(f"&bull; {c}", sub_bullet_style))
 
-    for title, desc in certs:
-        story.append(Paragraph(f"&bull; <b>{title}</b>", bullet_style))
-        if desc:
-            story.append(Paragraph(desc, sub_bullet_style))
+    story.append(PageBreak())
 
-    story.append(Spacer(1, 7))
-
-    # Achievements Section
-    story.extend(section("Achievements"))
-
+    # ==========================================
+    # PAGE 6: Achievements & Ideas
+    # ==========================================
+    story.extend(section("Achievements:"))
     achievements = [
-        ("Winner, Project Expo", "Presented and demonstrated an IoT-based Smart Irrigation System, explaining its working and impact."),
-        ("Published Patent Application (Team Lead)", "Filed and published Indian Patent application for Uncertainty-Aware Multimodal Crop Health AI System (App No: 202641109078).")
+        "<b>Winner, College Project Expo (1st Place):</b> Awarded 1st place for designing, developing, and demonstrating an IoT-based Smart Irrigation &amp; Rain Alert System, showcasing its sensory pipeline and agricultural water conservation impact.",
+        "<b>Official Patent Lead:</b> Filed official Indian Patent Application No. 202641109078 for an AI-based multimodal crop health detection, forecasting, and adaptive agronomic management system.",
+        "<b>Secretary — Robotics &amp; Automation Lab (RAL Club):</b> Directing club activities, technical bootcamps, drone demonstrations, and embedded automation showcases for 200+ engineering students at MLRITM.",
+        "<b>Smart India Hackathon (SIH):</b> Active participant and team contributor designing real-time AI automated solutions for complex challenges."
     ]
+    for a in achievements:
+        story.append(Paragraph(f"&bull; {a}", bullet_style))
+    story.append(Spacer(1, 10))
 
-    for title, desc in achievements:
-        story.append(Paragraph(f"&bull; <b>{title}</b> &ndash; {desc}", bullet_style))
+    story.extend(section("Ideas &amp; Currently Exploring:"))
+    ideas = [
+        "<b>AI Plant Health Platform:</b> Computer Vision + Agentic AI for plant leaf disease detection, continuous monitoring, and automated agronomy decision support (Deep Learning, Zero-Shot Learning, Agriculture Vision).",
+        "<b>Ultron — AI Desktop Assistant:</b> Voice-controlled AI agents for desktop automation, converting speech into autonomous OS controls and multi-step computer workflows (Speech AI, PyAutoGUI, Tool Calling).",
+        "<b>Agentic AI Workflows:</b> Researching and experimenting with autonomous AI agents, multi-tool calling, structured reasoning loops, and automated task execution (LangGraph, Tool Calling, RAG).",
+        "<b>Currently Learning &amp; Mastering:</b> Agentic AI, LangGraph, Advanced Computer Vision, Transfer Learning, FastAPI Deployment, and Voice AI."
+    ]
+    for i_item in ideas:
+        story.append(Paragraph(f"&bull; {i_item}", bullet_style))
 
     doc.build(story)
-    print(f"Generated {filename} successfully with exact 3-page template!")
+    print(f"Generated {output_path} successfully!")
 
-if __name__ == '__main__':
-    build_exact_resume("Resume.pdf")
-    doc = fitz.open("Resume.pdf")
-    print("Verification: Total pages =", len(doc))
-    for i, page in enumerate(doc):
-        print(f"Page {i+1} rect:", page.rect)
+if __name__ == "__main__":
+    generate_resume("t:\\Portfolio\\Resume.pdf")

@@ -140,7 +140,7 @@ Spotify Launches → Search Triggered → Coding Playlist Plays
     desc: "An AI-based computer vision system that detects road accidents from surveillance imagery using custom CNN + YOLOv8 models and dispatches emergency Telegram alerts with GPS coordinates.",
     tags: ["TensorFlow", "Keras", "YOLOv8", "Computer Vision", "Telegram API", "Flask"],
     icon: "🚗",
-    github: "https://github.com/thanmayeereddy925/accident_detection",
+    github: null,
     images: [
       "images/projects/image36.png",
       "images/projects/image14.png",
@@ -237,7 +237,7 @@ Spotify Launches → Search Triggered → Coding Playlist Plays
     desc: "A domain-specific Retrieval-Augmented Generation (RAG) assistant for microcontrollers and sensors, indexing local technical datasheets with Wikipedia API fallback and context-aware responses.",
     tags: ["RAG", "GenAI", "LLMs", "Flask", "NLP", "Wikipedia API"],
     icon: "💡",
-    github: "https://github.com/thanmayeereddy925/iot_hardware_bot",
+    github: null,
     images: [
       "images/projects/image15.png",
       "images/projects/image29.png"
@@ -282,7 +282,7 @@ Spotify Launches → Search Triggered → Coding Playlist Plays
     desc: "A clinical deep learning system translating 12-lead ECG waveform images into structured medical reports with a multi-role Flask web portal (Doctor, Patient, Technician, Admin) and SQLite audit logs.",
     tags: ["PyTorch", "Transformers", "2D CNN", "NLP", "Flask", "SQLite"],
     icon: "🫀",
-    github: "https://github.com/thanmayeereddy925/ECG_reportprediction_NLP",
+    github: null,
     images: [
       "images/projects/image10.png",
       "images/projects/image8.png",
@@ -329,7 +329,7 @@ Spotify Launches → Search Triggered → Coding Playlist Plays
     desc: "An adaptive study navigator that generates personalized learning roadmaps and dynamic study timetables using Flask, SQLite, and Google Gemini API with a Random Forest ML mastery diagnostic engine.",
     tags: ["Flask", "Gemini API", "Machine Learning", "Scikit-learn", "SQLite"],
     icon: "🧠",
-    github: "https://github.com/thanmayeereddy925/StudyMind-AI",
+    github: null,
     images: [
       "images/projects/image33.png",
       "images/projects/image17.png",
@@ -381,7 +381,7 @@ Spotify Launches → Search Triggered → Coding Playlist Plays
     desc: "An intelligent productivity and task management system featuring multi-role dashboards (Manager, Employee, Admin), ML-based work log anomaly detection, and project analytics using Flask and SQLite.",
     tags: ["Machine Learning", "Flask", "SQLite", "Data Analytics"],
     icon: "📈",
-    github: "https://github.com/thanmayeereddy925/AI-Productivity-Tracker",
+    github: null,
     images: [
       "images/projects/image34.png",
       "images/projects/image7.png",
