@@ -2118,23 +2118,44 @@ body.edit-mode .edit-menu {
 
 /* Hero Status Sub-line */
 .hero-status-sub {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  background: rgba(13, 18, 34, 0.6);
-  border: 1px solid var(--line-strong);
-  border-radius: 100px;
-  padding: 6px 16px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
+  gap: 8px 10px;
+  margin-bottom: 24px;
+  max-width: 650px;
 }
 
-.hero-status-sub .sep {
-  color: var(--accent);
-  opacity: 0.7;
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(13, 18, 34, 0.7);
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+}
+
+.status-chip:hover {
+  border-color: var(--line-accent);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.status-chip-active {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.15);
 }
 
 /* Currently Building Cards */
